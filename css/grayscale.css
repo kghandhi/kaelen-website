@@ -169,8 +169,8 @@
 .about-section {
   padding-top: 10rem;
   padding-bottom: 10rem;
-  background: -webkit-gradient(linear, left top, left bottom, from(#212529), color-stop(#89937C), color-stop(#89937C), to(#C1AE9F));
-  background: linear-gradient(to bottom, #212529, #89937C, #89937C, #C1AE9F);
+  background: -webkit-gradient(linear, left top, left bottom, from(#161616), color-stop(#89937C), to(#89937C));
+  background: linear-gradient(to bottom, #161616, #89937C, #89937C);
 }
 
 .about-section h2 {
@@ -294,8 +294,8 @@
   padding-top: 10rem;
   padding-bottom: 10rem;
   background: #C1AE9F;
-  background: -webkit-gradient(linear, left top, left bottom, from(#C1AE9F), to(#715B64));
-  background: linear-gradient(to bottom, #C1AE9F, #715B64);
+  background: -webkit-gradient(linear, left top, left bottom, from(#89937C), color-stop(#C1AE9F), to(#715B64));
+  background: linear-gradient(to bottom, #89937C, #C1AE9F, #715B64);
 }
 
 .gigs-section h2 {
