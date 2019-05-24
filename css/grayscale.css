@@ -308,6 +308,57 @@
   padding: 2rem;
 }
 
+.lost {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 35rem;
+  padding: 15rem 0;
+  background-image: url("https://i.imgur.com/gcqxyUS.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+.lost h1 {
+  font-family: 'Kalam';
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+  letter-spacing: 0.6rem;
+  background: #fff;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.lost h2 {
+  max-width: 20rem;
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  .lost h1 {
+    font-size: 4rem;
+    line-height: 4rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .lost {
+    height: 100vh;
+    padding: 0;
+  }
+  .lost h1 {
+    font-size: 3rem;
+    line-height: 4rem;
+    letter-spacing: 0.6rem;
+  }
+  .lost h2 {
+    max-width: 30rem;
+    font-size: 1.25rem;
+  }
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   letter-spacing: 0.0625em;
