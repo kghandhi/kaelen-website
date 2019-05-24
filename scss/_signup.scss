@@ -1,0 +1,23 @@
+.signup-section {
+  padding: 12rem 0;
+  width: 100%;
+  height: auto;
+  min-height: 23rem;
+  background: linear-gradient(to bottom, #{fade-out($green, .9)} 0%,#{fade-out($green, .5)} 75%,$green 100%), url('../img/kaelen_senior_recital.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  .form-inline {
+    input {
+      box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0,0,0,.1) !important;
+      padding: 1.25rem 2rem;
+      height: auto;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 90%;
+      // text-transform: uppercase;
+      letter-spacing: 0.10rem;
+      border: 0;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.gigs-section {
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  background: $tan;
+  background: linear-gradient(to bottom, $tan, $mauve);
+  h2 {
+    font-family: 'Kalam', cursive;
+    color: $purple;
+  }
+  iframe {
+    display: block;
+    padding: 2rem;
+  }
+}

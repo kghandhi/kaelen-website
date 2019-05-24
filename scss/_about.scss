@@ -1,0 +1,11 @@
+.about-section {
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  background: linear-gradient(to bottom, $gray-900, $green, $green, $tan);
+  h2 {
+    font-family: 'Kalam', cursive;
+  }
+  p {
+    margin-bottom: 5rem;
+  }
+}
