@@ -7,8 +7,20 @@
     font-family: 'Kalam', cursive;
     color: $purple;
   }
+  h3 {
+    color: $orange;
+    text-align: center;
+  }
   iframe {
     display: block;
     padding: 2rem;
+  }
+  .upcoming-gigs {
+    padding: 2rem;
+    align: center;
+    background: $gray-300;
+  }
+  .gig-event {
+    padding: 1rem;
   }
 }

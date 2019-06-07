@@ -303,9 +303,24 @@
   color: #69385C;
 }
 
+.gigs-section h3 {
+  color: #B45E53;
+  text-align: center;
+}
+
 .gigs-section iframe {
   display: block;
   padding: 2rem;
+}
+
+.gigs-section .upcoming-gigs {
+  padding: 2rem;
+  align: center;
+  background: #dee2e6;
+}
+
+.gigs-section .gig-event {
+  padding: 1rem;
 }
 
 .lost {

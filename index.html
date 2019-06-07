@@ -23,6 +23,8 @@
 
   <!-- Custom styles for this template -->
   <link href="css/grayscale.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/moment@2/moment.min.js"></script>
+  <script src="https://apis.google.com/js/api.js"></script>
 
 </head>
 
@@ -75,7 +77,7 @@
         <div class="col-lg-8 mx-auto">
           <h2 class="text-white mb-4">About Me</h2>
           <p class="text-white-50">Kaelen is making a musical difference in the world. As a New York based musician and teacher he is interested in bringing us
-            together in a way only music can. He specializes in jazz playing primarily the tenor saxophone, but he is skilled in all saxophones and the flute--he is a constant learner and is working on clarinet competence.</p>
+            together in a way only music can. He specializes in jazz playing primarily the tenor saxophone, but he is skilled in all saxophones and the flute&mdash;he is a constant learner and is working on clarinet competence.</p>
         </div>
       </div>
       <a href="../img/resume.pdf" download class="btn btn-primary js-scroll-trigger">download my resume</a>
@@ -87,13 +89,67 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2 class="mb-4">Gigs</h2>
-          <div class="embed-responsive embed-responsive-4by3">
-            <iframe class="embed-responsive-item" src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showNav=0&amp;showPrint=0&amp;showTabs=0&amp;showTz=0&amp;height=600&amp;wkst=1&amp;bgcolor=%2393867F&amp;src=6jmgv23e4b4j44uhu0k7b56aac%40group.calendar.google.com&amp;color=%2323164E&amp;ctz=America%2FNew_York" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no" align="center"></iframe>
-          </div>
+          <h2 class="mb-4">Upcoming Events</h2>
+          <div class='upcoming-gigs' id="gig-calendar"></div>
+          <script>
+            function formatFbLink(event) {
+              if (event.description) {
+                return `<a href='${event.description}' target='_blank'>FB EVENT</a>`;
+              } else {
+                return "";
+              }
+            };
+            function formatDate(event) {
+              var startsAtMoment = moment(event.start.dateTime);
+              var endsAtMoment = moment(event.end.dateTime);
+              var startsAt = startsAtMoment.format("MMMM Do YYYY, h:mm a");
+              if (startsAtMoment.isSame(endsAtMoment, 'date')) {
+                var endsAt = endsAtMoment.format("LT");
+              } else {
+                var endsAt = endsAtMoment.format("h:mm a MMMM Do");
+              }
+              if (event.start.date) {
+                return `${startsAtMoment.format("MMMM Do YYYY")}`;
+              } else {
+                return `${startsAt} - ${endsAt}`;
+              };
+            };
+            function printCalendar() {
+              var calendarId = '6jmgv23e4b4j44uhu0k7b56aac@group.calendar.google.com';
+              var apiKey = 'AIzaSyDi5AdwUeZaAWkCIISwcLBZ7vqKRN6HUJY';
+              var discoveryDocs = ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest']
+              var timeZone = 'America/New_York'
+              gapi.client.init({
+                apiKey: apiKey,
+                discoveryDocs: discoveryDocs
+              }).then(function() {
+                return gapi.client.calendar.events.list({
+                  'calendarId': calendarId,
+                  'singleEvents': true,
+                  'showDeleted': false,
+                  'timeMin': moment().format(),
+                  'timeZone': timeZone,
+                  'maxResults': 30,
+                  'orderBy': 'startTime'
+                });
+              }).then(function (response) {
+                if (response.result.items) {
+                  var calendarRows = ['<ul style="list-style: none">'];
+                  response.result.items.forEach(function(event) {
+                    calendarRows.push(`<h3>${event.summary}</h3>`);
+                    calendarRows.push(`<li class="gig-event">${formatDate(event)} at ${event.location} ${formatFbLink(event)}</li>`);
+                  });
+                  calendarRows.push('</ul>');
+                  $('#gig-calendar').html(calendarRows.join(""));
+                } else (function (reason) {
+                  console.log('Error: ' + reason.result.error.message);
+                })});
+            };
+            gapi.load('client', printCalendar);
+          </script>
         </div>
       </div>
-      <a href="gigs.html" class="btn btn-primary js-scroll-trigger">recent gigs</a>
+      <a href="https://calendar.google.com/calendar/embed?src=6jmgv23e4b4j44uhu0k7b56aac%40group.calendar.google.com&ctz=America%2FNew_York" target='_blank' class="btn btn-primary js-scroll-trigger">public calendar</a>
     </div>
   </section>
 
@@ -212,7 +268,6 @@
           <i class="fab fa-bandcamp"></i>
         </a>
       </div>
-
     </div>
   </section>
 
