@@ -134,12 +134,10 @@
                 });
               }).then(function (response) {
                 if (response.result.items) {
-                  var calendarRows = ['<ul style="list-style: none">'];
+                  var calendarRows = [];
                   response.result.items.forEach(function(event) {
-                    calendarRows.push(`<h3>${event.summary}</h3>`);
-                    calendarRows.push(`<li class="gig-event">${formatDate(event)} at ${event.location} ${formatFbLink(event)}</li>`);
+                    calendarRows.push(`<div class="gig-event"><h3>${event.summary}</h3><p>${formatDate(event)} at ${event.location} ${formatFbLink(event)}</p></div>`);
                   });
-                  calendarRows.push('</ul>');
                   $('#gig-calendar').html(calendarRows.join(""));
                 } else (function (reason) {
                   console.log('Error: ' + reason.result.error.message);
@@ -156,7 +154,6 @@
   <!-- Listen Section -->
   <section id="listen" class="projects-section bg-light">
     <div class="container">
-
 
       <!-- YouTube Playlist -->
       <div class="row align-items-center no-gutters mb-4 mb-lg-5">
@@ -185,7 +182,7 @@
         <!-- Bandcamp Playlist -->
         <div class="row align-items-center mb-4 mb-lg-5">
           <div class="col-xl-12 col-lg-7">
-            <iframe style="border: 0; width: 560px; height: 374px;" src="https://bandcamp.com/EmbeddedPlayer/album=3885090129/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/" seamless><a href="http://flightschoolnyc.bandcamp.com/album/flight-school">Flight School by Flight School</a></iframe>
+            <iframe width="100%" height="375" scrolling="no" frameborder="no" allow="autoplay" src="https://bandcamp.com/EmbeddedPlayer/album=3885090129/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/"></iframe>
           </div>
         </div>
       </div>
