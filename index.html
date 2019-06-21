@@ -61,7 +61,7 @@
     <div class="container d-flex h-100">
       <div class="row align-self-center">
         <div class="float-center">
-          <h1>Coming Soon</h1>
+          <!-- <h1>Coming Soon</h1> -->
           <div class="row mx-auto align-items-center">
             <a href="#about" class="btn btn-primary js-scroll-trigger">Find out more</a>
           </div>
@@ -88,36 +88,72 @@
   <section id="see" class="gigs-section text-center align-items-center">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 mx-auto">
+        <div class="col-12 mx-auto">
           <h2 class="mb-4">Upcoming Events</h2>
-          <div class='upcoming-gigs' id="gig-calendar"></div>
-          <script>
-            function formatFbLink(event) {
-              if (event.description) {
-                return `<a href='${event.description}' target='_blank'>FB EVENT</a>`;
-              } else {
-                return "";
-              }
-            };
-            function formatDate(event) {
-              var startsAtMoment = moment(event.start.dateTime);
-              var endsAtMoment = moment(event.end.dateTime);
-              var startsAt = startsAtMoment.format("MMMM Do YYYY, h:mm a");
-              if (startsAtMoment.isSame(endsAtMoment, 'date')) {
-                var endsAt = endsAtMoment.format("LT");
-              } else {
-                var endsAt = endsAtMoment.format("h:mm a MMMM Do");
-              }
-              if (event.start.date) {
-                return `${startsAtMoment.format("MMMM Do YYYY")}`;
-              } else {
-                return `${startsAt} - ${endsAt}`;
+          <div class='upcoming-gigs' id="upcoming-events"></div>
+          <a href="https://calendar.google.com/calendar/embed?src=6jmgv23e4b4j44uhu0k7b56aac%40group.calendar.google.com&ctz=America%2FNew_York" target='_blank' class="btn btn-primary js-scroll-trigger">my calendar</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 mx-auto">
+          <h2 class="mb-4">Past Events</h2>
+          <div class='upcoming-gigs' id="past-events"></div>
+        </div>
+      </div>
+        <script>
+          function formatFbLink(event) {
+            if (event.description) {
+              return `<a href='${event.description}' target='_blank'><i class="fab fa-facebook-f"></i> event </a>`;
+            } else {
+              return "";
+            }
+          };
+          function formatLocation(event) {
+            var result = "";
+
+            if (event.location) {
+              result += `@ ${event.location.split(",")[0]}`
+              var fbEvent = formatFbLink(event);
+              if (fbEvent.length > 0) {
+                result += `, ${fbEvent}`;
               };
             };
-            function printCalendar() {
-              var calendarId = '6jmgv23e4b4j44uhu0k7b56aac@group.calendar.google.com';
-              var apiKey = 'AIzaSyDi5AdwUeZaAWkCIISwcLBZ7vqKRN6HUJY';
-              var discoveryDocs = ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest']
+            return `<p>${result}</p>`;
+          };
+          function formatStartEndTime(event) {
+            var startsAtMoment = moment(event.start.dateTime);
+            var endsAtMoment = moment(event.end.dateTime);
+            var startsAt = startsAtMoment.format("MMMM Do YYYY, h:mm a");
+            if (startsAtMoment.isSame(endsAtMoment, 'date')) {
+              var endsAt = endsAtMoment.format("LT");
+            } else {
+              var endsAt = endsAtMoment.format("h:mm a MMMM Do");
+            }
+            if (event.start.date) {
+              return `<p>${startsAtMoment.format("MMMM Do YYYY")}</p>`;
+            } else {
+              return `<p>${startsAt} - ${endsAt}</p>`;
+            };
+          };
+          function formatDate(event) {
+            var startsAtMoment = moment(event.start.dateTime);
+            var date = `<div class="col-sm-2 gig-date text-center"><p>${startsAtMoment.format("MMM")}<br/>${startsAtMoment.format("Do")}</p></div>`
+            return `${date}`;
+          };
+          function formatSummary(event) {
+            return `<div class="col-sm-5 align-self-center"> <h3>${event.summary} \/\/</h3> </div>`;
+          };
+          function formatEvent(event) {
+            var summary = formatSummary(event);
+            var startEndTime = formatStartEndTime(event);
+            var date = formatDate(event);
+            var location = formatLocation(event);
+            return `<div class="row gig-event">${date}${summary}<div class="col-sm-5 align-self-center">${startEndTime}${location}</div></div>`;
+          };
+          function printCalendar() {
+            var calendarId = '6jmgv23e4b4j44uhu0k7b56aac@group.calendar.google.com';
+            var apiKey = 'AIzaSyDi5AdwUeZaAWkCIISwcLBZ7vqKRN6HUJY';
+            var discoveryDocs = ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest']
               var timeZone = 'America/New_York'
               gapi.client.init({
                 apiKey: apiKey,
@@ -127,27 +163,31 @@
                   'calendarId': calendarId,
                   'singleEvents': true,
                   'showDeleted': false,
-                  'timeMin': moment().format(),
+                  'timeMin': moment().subtract(1, 'month').format(),
                   'timeZone': timeZone,
                   'maxResults': 30,
                   'orderBy': 'startTime'
                 });
               }).then(function (response) {
                 if (response.result.items) {
-                  var calendarRows = [];
+                  var upcomingEventRows = [];
+                  var pastEventRows = [];
                   response.result.items.forEach(function(event) {
-                    calendarRows.push(`<div class="gig-event"><h3>${event.summary}</h3><p>${formatDate(event)} at ${event.location} ${formatFbLink(event)}</p></div>`);
+                    if (moment(event.start.dateTime) > moment()) {
+                      upcomingEventRows.push(formatEvent(event));
+                    } else {
+                      pastEventRows.push(formatEvent(event));
+                    };
                   });
-                  $('#gig-calendar').html(calendarRows.join(""));
+                  $('#upcoming-events').html(upcomingEventRows.join(""));
+                  $('#past-events').html(pastEventRows.reverse().join(""));
                 } else (function (reason) {
                   console.log('Error: ' + reason.result.error.message);
                 })});
-            };
-            gapi.load('client', printCalendar);
-          </script>
-        </div>
+          };
+          gapi.load('client', printCalendar);
+        </script>
       </div>
-      <a href="https://calendar.google.com/calendar/embed?src=6jmgv23e4b4j44uhu0k7b56aac%40group.calendar.google.com&ctz=America%2FNew_York" target='_blank' class="btn btn-primary js-scroll-trigger">public calendar</a>
     </div>
   </section>
 
@@ -199,7 +239,13 @@
           <i class="far fa-bell fa-2x mb-2 text-white"></i>
           <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
 
-          <form class="form-inline d-flex">
+          <script>
+						function submitEmail() {
+							var email = document.getElementById("inputEmail").value;
+              alert(`Sorry, emailing doesn't work yet!`);
+						};
+          </script>
+          <form onsubmit="return submitEmail();" class="form-inline d-flex">
             <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address...">
             <button type="submit" class="btn btn-primary mx-auto">Subscribe</button>
           </form>

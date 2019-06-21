@@ -4,12 +4,16 @@
   background: $tan;
   background: linear-gradient(to bottom, $green, $tan, $mauve);
   h2 {
-    font-family: 'Kalam', cursive;
+    font-family: 'Advent Pro', sans-serif;
     color: $purple;
   }
   h3 {
     color: $green;
-    font-family: 'Kalam', cursive;
+    font-family: 'Advent Pro', sans-serif;
+    text-align: center;
+  }
+  h4 {
+    color: $mauve;
     text-align: center;
   }
   iframe {
@@ -19,9 +23,17 @@
   .upcoming-gigs {
     padding: 2rem;
     align: center;
-    background: $gray-300;
+  }
+  .gig-date {
+    font-family: 'Advent Pro', sans-serif;
+    color: $white;
+    font-size: 1.3rem;
+    background: $green;
+    padding: 1rem;
   }
   .gig-event {
-    padding: 1rem;
+    background: $gray-300;
+    border: solid;
+    border-color: $purple;
   }
 }
