@@ -4,20 +4,18 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-grayscale/blob/master/LICENSE)
  */
 
-@import url("https://fonts.googleapis.com/css?family=Kalam:700|Montserrat|Open+Sans&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Oswald&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Advent+Pro&display=swap");
 #mainNav {
   min-height: 56px;
-  background-color: #fff;
+  background-color: #F6F3F6;
 }
 
 #mainNav .navbar-toggler {
   font-size: 80%;
   padding: 0.75rem;
-  color: #64a19d;
-  border: 1px solid #64a19d;
+  color: #AF147B;
+  border: 1px solid #AF147B;
 }
 
 #mainNav .navbar-toggler:focus {
@@ -32,7 +30,7 @@
 }
 
 #mainNav .navbar-nav .nav-item:hover {
-  color: fade(white, 80%);
+  color: fade(#F6F3F6, 80%);
   outline: none;
   background-color: transparent;
 }
@@ -53,41 +51,41 @@
   }
   #mainNav .navbar-brand {
     padding: .5rem 0;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(246, 243, 246, 0.5);
   }
   #mainNav .nav-link {
     -webkit-transition: none;
     transition: none;
     padding: 2rem 1.5rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(246, 243, 246, 0.5);
   }
   #mainNav .nav-link:hover {
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(246, 243, 246, 0.75);
   }
   #mainNav .nav-link:active {
-    color: white;
+    color: #CBCCD4;
   }
   #mainNav.navbar-shrink {
-    background-color: #fff;
+    background-color: #F6F3F6;
   }
   #mainNav.navbar-shrink .navbar-brand {
-    color: #161616;
+    color: #000000;
   }
   #mainNav.navbar-shrink .nav-link {
-    color: #161616;
+    color: #000000;
     padding: 1.5rem 1.5rem 1.25rem;
     border-bottom: 0.25rem solid transparent;
   }
   #mainNav.navbar-shrink .nav-link:hover {
-    color: #64a19d;
+    color: #AF147B;
   }
   #mainNav.navbar-shrink .nav-link:active {
-    color: #467370;
+    color: #6a0c4b;
   }
   #mainNav.navbar-shrink .nav-link.active {
-    color: #64a19d;
+    color: #AF147B;
     outline: none;
-    border-bottom: 0.25rem solid #64a19d;
+    border-bottom: 0.25rem solid #AF147B;
   }
 }
 
@@ -97,8 +95,8 @@
   height: auto;
   min-height: 35rem;
   padding: 15rem 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.3)), color-stop(75%, rgba(22, 22, 22, 0.7)), to(#161616)), url("../img/kaelen_india.jpg");
-  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.3) 0%, rgba(22, 22, 22, 0.7) 75%, #161616 100%), url("../img/kaelen_india.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(4, 4, 55, 0.3)), color-stop(75%, rgba(4, 4, 55, 0.7)), to(#040437)), url("../img/kaelen_senior_recital.jpg");
+  background: linear-gradient(to bottom, rgba(4, 4, 55, 0.3) 0%, rgba(4, 4, 55, 0.7) 75%, #040437 100%), url("../img/kaelen_senior_recital.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -110,7 +108,7 @@
   font-size: 2.2rem;
   line-height: 2.5rem;
   letter-spacing: 0.6rem;
-  background: -webkit-linear-gradient(rgba(255, 255, 255, 0.9), rgba(105, 56, 92, 0));
+  background: -webkit-linear-gradient(rgba(255, 255, 255, 0.9), rgba(246, 243, 246, 0));
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
 }
@@ -154,27 +152,27 @@
 }
 
 .btn-primary {
-  background-color: #69385C;
+  background-color: #7C0967;
 }
 
 .btn-primary:hover {
-  background-color: #55444b;
+  background-color: #0b0742;
 }
 
 .btn-primary:focus {
-  background-color: #48263f;
-  color: #C1AE9F;
+  background-color: #000078;
+  color: #fff;
 }
 
 .btn-primary:active {
-  background-color: #371d30 !important;
+  background-color: #00005f !important;
 }
 
 .about-section {
   padding-top: 10rem;
   padding-bottom: 10rem;
-  background: -webkit-gradient(linear, left top, left bottom, from(#161616), color-stop(#89937C), to(#89937C));
-  background: linear-gradient(to bottom, #161616, #89937C, #89937C);
+  background: -webkit-gradient(linear, left top, left bottom, from(#040437), color-stop(#0B0763), to(#7C0967));
+  background: linear-gradient(to bottom, #040437, #0B0763, #7C0967);
 }
 
 .about-section h2 {
@@ -186,15 +184,19 @@
 }
 
 .projects-section {
-  background: -webkit-gradient(linear, left top, left bottom, from(#715B64), color-stop(#715B64), color-stop(#715B64), to(#161616));
-  background: linear-gradient(to bottom, #715B64, #715B64, #715B64, #161616);
+  background: -webkit-gradient(linear, left top, left bottom, from(#0B0763), color-stop(#0F0887), to(#08041E));
+  background: linear-gradient(to bottom, #0B0763, #0F0887, #08041E);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(11, 7, 99, 0.6)), color-stop(75%, rgba(15, 8, 135, 0.5)), to(#08041E)), url("../img/floor.jpg");
+  background: linear-gradient(to bottom, rgba(11, 7, 99, 0.6) 0%, rgba(15, 8, 135, 0.5) 75%, #08041E 100%), url("../img/floor.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   padding: 10rem 0;
 }
 
 .projects-section h2 {
   color: #fff;
   font-family: 'Advent Pro', sans-serif;
-  border-bottom: 0.5rem solid #64a19d;
+  border-bottom: 0.5rem solid #AF147B;
   border-width: .25rem;
   width: 10rem;
 }
@@ -206,7 +208,7 @@
 @media (min-width: 992px) {
   .projects-section .featured-text {
     padding: 0 0 0 2rem;
-    border-left: 0.5rem solid #64a19d;
+    border-left: 0.5rem solid #AF147B;
   }
 }
 
@@ -220,7 +222,7 @@
     padding: 5rem;
   }
   .projects-section .project-text hr {
-    border-color: #64a19d;
+    border-color: #AF147B;
     border-width: .25rem;
     width: 30%;
   }
@@ -231,8 +233,8 @@
   width: 100%;
   height: auto;
   min-height: 23rem;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(137, 147, 124, 0.1)), color-stop(75%, rgba(137, 147, 124, 0.5)), to(#89937C)), url("../img/kaelen_senior_recital.jpg");
-  background: linear-gradient(to bottom, rgba(137, 147, 124, 0.1) 0%, rgba(137, 147, 124, 0.5) 75%, #89937C 100%), url("../img/kaelen_senior_recital.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(8, 4, 30, 0.1)), color-stop(75%, rgba(11, 7, 99, 0.5)), to(#040437)), url("../img/curtain.jpg");
+  background: linear-gradient(to bottom, rgba(8, 4, 30, 0.1) 0%, rgba(11, 7, 99, 0.5) 75%, #040437 100%), url("../img/curtain.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -251,13 +253,13 @@
 
 .contact-section {
   padding: 5rem 0 0;
-  background: #89937C;
+  background: #040437;
 }
 
 .contact-section .card {
   border: 0;
-  border-bottom: 0.25rem solid #64a19d;
-  background: #d9cdc4;
+  border-bottom: 0.25rem solid #AF147B;
+  background: #ecedf0;
 }
 
 .contact-section .card h4 {
@@ -267,7 +269,7 @@
 }
 
 .contact-section .card hr {
-  border-color: #64a19d;
+  border-color: #AF147B;
   border-width: 0.25rem;
   width: 3rem;
 }
@@ -297,18 +299,17 @@
 .gigs-section {
   padding-top: 10rem;
   padding-bottom: 10rem;
-  background: #C1AE9F;
-  background: -webkit-gradient(linear, left top, left bottom, from(#89937C), color-stop(#C1AE9F), to(#715B64));
-  background: linear-gradient(to bottom, #89937C, #C1AE9F, #715B64);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(175, 20, 123, 0.8)), color-stop(75%, rgba(35, 22, 204, 0.7)), to(#0B0763)), url("../img/wall.jpg");
+  background: linear-gradient(to bottom, rgba(175, 20, 123, 0.8) 0%, rgba(35, 22, 204, 0.7) 75%, #0B0763 100%), url("../img/wall.jpg");
 }
 
 .gigs-section h2 {
   font-family: 'Advent Pro', sans-serif;
-  color: #69385C;
+  color: #CBCCD4;
 }
 
 .gigs-section h3 {
-  color: #89937C;
+  color: #2316CC;
   font-family: 'Advent Pro', sans-serif;
   text-align: center;
 }
@@ -332,14 +333,14 @@
   font-family: 'Advent Pro', sans-serif;
   color: #fff;
   font-size: 1.3rem;
-  background: #89937C;
+  background: #0B0763;
   padding: 1rem;
 }
 
 .gigs-section .gig-event {
   background: #dee2e6;
   border: solid;
-  border-color: #69385C;
+  border-color: #7C0967;
 }
 
 .lost {
@@ -349,7 +350,7 @@
   min-height: 35rem;
   padding: 15rem 0;
   background-image: url("https://i.imgur.com/gcqxyUS.jpg");
-  background-position: center;
+  background-position: top;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
@@ -399,28 +400,44 @@ body {
 }
 
 a {
-  color: #64a19d;
+  color: #AF147B;
 }
 
 a:focus, a:hover {
   text-decoration: none;
-  color: #3c6360;
+  color: #530a3b;
 }
 
 .bg-black {
-  background-color: #161616 !important;
+  background-color: #000000 !important;
 }
 
 .bg-primary {
-  background-color: #64a19d !important;
+  background-color: #AF147B !important;
 }
 
 .bg-green {
-  background-color: #89937C !important;
+  background-color: #040437 !important;
 }
 
 .text-primary {
-  color: #64a19d !important;
+  color: #AF147B !important;
+}
+
+.glow {
+  font-size: 70px;
+  color: #F6F3F6;
+  text-align: center;
+  text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
 }
 
 footer {

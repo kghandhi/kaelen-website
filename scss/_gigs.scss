@@ -1,14 +1,13 @@
 .gigs-section {
   padding-top: 10rem;
   padding-bottom: 10rem;
-  background: $tan;
-  background: linear-gradient(to bottom, $green, $tan, $mauve);
+  background: linear-gradient(to bottom, #{fade-out($primary, .2)} 0%, #{fade-out($medium-blue, .3)} 75%, $navy 100%,), url('../img/wall.jpg');
   h2 {
     font-family: 'Advent Pro', sans-serif;
-    color: $purple;
+    color: $white-blue;
   }
   h3 {
-    color: $green;
+    color: $medium-blue;
     font-family: 'Advent Pro', sans-serif;
     text-align: center;
   }
@@ -28,7 +27,7 @@
     font-family: 'Advent Pro', sans-serif;
     color: $white;
     font-size: 1.3rem;
-    background: $green;
+    background: $navy;
     padding: 1rem;
   }
   .gig-event {
@@ -36,4 +35,5 @@
     border: solid;
     border-color: $purple;
   }
+
 }
