@@ -171,8 +171,8 @@
 .about-section {
   padding-top: 10rem;
   padding-bottom: 10rem;
-  background: -webkit-gradient(linear, left top, left bottom, from(#040437), color-stop(#0B0763), to(#7C0967));
-  background: linear-gradient(to bottom, #040437, #0B0763, #7C0967);
+  background: -webkit-gradient(linear, left top, left bottom, from(#040437), color-stop(#0B0763), to(#000000));
+  background: linear-gradient(to bottom, #040437, #0B0763, #000000);
 }
 
 .about-section h2 {
@@ -186,8 +186,8 @@
 .projects-section {
   background: -webkit-gradient(linear, left top, left bottom, from(#0B0763), color-stop(#0F0887), to(#08041E));
   background: linear-gradient(to bottom, #0B0763, #0F0887, #08041E);
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(11, 7, 99, 0.6)), color-stop(75%, rgba(15, 8, 135, 0.5)), to(#08041E)), url("../img/floor.jpg");
-  background: linear-gradient(to bottom, rgba(11, 7, 99, 0.6) 0%, rgba(15, 8, 135, 0.5) 75%, #08041E 100%), url("../img/floor.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.6)), color-stop(75%, rgba(15, 8, 135, 0.5)), to(#08041E)), url("../img/floor.jpg");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(15, 8, 135, 0.5) 75%, #08041E 100%), url("../img/floor.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   padding: 10rem 0;
@@ -299,8 +299,8 @@
 .gigs-section {
   padding-top: 10rem;
   padding-bottom: 10rem;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(175, 20, 123, 0.8)), color-stop(75%, rgba(35, 22, 204, 0.7)), to(#0B0763)), url("../img/wall.jpg");
-  background: linear-gradient(to bottom, rgba(175, 20, 123, 0.8) 0%, rgba(35, 22, 204, 0.7) 75%, #0B0763 100%), url("../img/wall.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(175, 20, 123, 0.8)), color-stop(75%, rgba(35, 22, 204, 0.7)), to(#000000)), url("../img/wall.jpg");
+  background: linear-gradient(to bottom, rgba(175, 20, 123, 0.8) 0%, rgba(35, 22, 204, 0.7) 75%, #000000 100%), url("../img/wall.jpg");
 }
 
 .gigs-section h2 {
@@ -338,9 +338,10 @@
 }
 
 .gigs-section .gig-event {
-  background: #dee2e6;
+  background: #F6F3F6;
   border: solid;
-  border-color: #7C0967;
+  border-width: thin;
+  border-color: #000000;
 }
 
 .lost {

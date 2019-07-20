@@ -1,7 +1,7 @@
 .gigs-section {
   padding-top: 10rem;
   padding-bottom: 10rem;
-  background: linear-gradient(to bottom, #{fade-out($primary, .2)} 0%, #{fade-out($medium-blue, .3)} 75%, $navy 100%,), url('../img/wall.jpg');
+  background: linear-gradient(to bottom, #{fade-out($primary, .2)} 0%, #{fade-out($medium-blue, .3)} 75%, $black 100%,), url('../img/wall.jpg');
   h2 {
     font-family: 'Advent Pro', sans-serif;
     color: $white-blue;
@@ -31,9 +31,9 @@
     padding: 1rem;
   }
   .gig-event {
-    background: $gray-300;
+    background: $white-smoke;
     border: solid;
-    border-color: $purple;
+    border-width: thin;
+    border-color: $black;
   }
-
 }

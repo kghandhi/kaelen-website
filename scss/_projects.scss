@@ -2,7 +2,7 @@
   background: linear-gradient(to bottom, $navy, $dark-blue, $midnight-blue);
   // background: linear-gradient(to bottom, #{fade-out($navy, .2)} 0%, #{fade-out($medium-blue, .3)} 75%, $dark-navy 100%,), url('../img/wall.jpg');
   // background: linear-gradient(to bottom, #{fade-out($primary, .2)} 0%, #{fade-out($medium-blue, .3)} 75%, $navy 100%,), url('../img/wall.jpg');
-  background: linear-gradient(to bottom, #{fade-out($navy, .4)} 0%,#{fade-out($dark-blue, .5)} 75%,$midnight-blue 100%), url('../img/floor.jpg');
+  background: linear-gradient(to bottom, #{fade-out($black, .4)} 0%,#{fade-out($dark-blue, .5)} 75%,$midnight-blue 100%), url('../img/floor.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   padding: 10rem 0;
