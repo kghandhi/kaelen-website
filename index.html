@@ -101,7 +101,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-12 mx-auto">
+        <div class="col-12 mx-auto mb-4">
           <a href="https://calendar.google.com/calendar/embed?src=6jmgv23e4b4j44uhu0k7b56aac%40group.calendar.google.com&ctz=America%2FNew_York" target='_blank' class="btn btn-primary js-scroll-trigger">see more on my calendar</a>
         </div>
       </div>
@@ -111,134 +111,160 @@
           <div class='upcoming-gigs' id="past-events"></div>
         </div>
       </div>
-        <script>
-          function formatFbLink(event) {
-            if (event.description) {
-              return `<a href='${event.description}' target='_blank'><i class="fab fa-facebook-f"></i> event </a>`;
-            } else {
+      <script>
+        function formatFbLink(event) {
+          if (event.description) {
+            var link = event.description.split('<br>')[0];
+            var linkOrNull = link.match(/\>https:\/\/www.facebook.com\/events\/.*\/\</)[0].replace("<","").replace(">","");
+            if (linkOrNull === null) {
               return "";
-            }
-          };
-          function formatLocation(event) {
-            var result = "";
-
-            if (event.location) {
-              result += `@ ${event.location.split(",")[0]}`
-              var fbEvent = formatFbLink(event);
-              if (fbEvent.length > 0) {
-                result += `, ${fbEvent}`;
-              };
-            };
-            return `<p>${result}</p>`;
-          };
-          function formatStartEndTime(event) {
-            var startsAtMoment = moment(event.start.dateTime);
-            var endsAtMoment = moment(event.end.dateTime);
-            var startsAt = startsAtMoment.format("MMMM Do YYYY, h:mm a");
-            if (startsAtMoment.isSame(endsAtMoment, 'date')) {
-              var endsAt = endsAtMoment.format("LT");
             } else {
-              var endsAt = endsAtMoment.format("h:mm a MMMM Do");
+// `<a href='${linkOrNull}' target='_blank'><i class="fab fa-facebook-f"></i> event </a>`;
+              return linkOrNull;
             }
-            if (event.start.date) {
-              return `<p>${startsAtMoment.format("MMMM Do YYYY")}</p>`;
-            } else {
-              return `<p>${startsAt} - ${endsAt}</p>`;
-            };
+          } else {
+            return "";
+          }
+        };
+        function formatLocation(event) {
+          var linkOrNull = null;
+          var locationName = `<i class="fas fa-street-view"></i>`;
+          if (event.location) {
+            locationName = event.location.split(",")[0];
           };
-          function formatDate(event) {
-            var startsAtMoment = moment(event.start.dateTime);
-            var date = `<div class="col-sm-2 gig-date text-center"><p>${startsAtMoment.format("MMM")}<br/>${startsAtMoment.format("Do")}</p></div>`
-            return `${date}`;
+          var result = `@ ${locationName}`;
+          if (event.description) {
+            var maybeLink = event.description.split('<br>');
+            if (maybeLink.length > 1) {
+              var linkOrNull = maybeLink[1].match(/>https:\/\/www.google.com\/maps\/.*\</)[0].replace("<","").replace(">","");
+              if (linkOrNull !== null) {
+                result = `@ <a href='${linkOrNull}' target='_blank'>${locationName}</a>`;
+              }
+            } 
+          }
+          return `<p>${result}</p>`;
+        };
+        function formatStartEndTime(event) {
+          var startsAtMoment = moment(event.start.dateTime);
+          var endsAtMoment = moment(event.end.dateTime);
+          var startsAt = startsAtMoment.format("MMMM Do YYYY, h:mm a");
+          if (startsAtMoment.isSame(endsAtMoment, 'date')) {
+            var endsAt = endsAtMoment.format("LT");
+          } else {
+            var endsAt = endsAtMoment.format("h:mm a MMMM Do");
+          }
+          if (event.start.date) {
+            return `<p>${startsAtMoment.format("MMMM Do YYYY")}</p>`;
+          } else {
+            return `<p>${startsAt} - ${endsAt}</p>`;
           };
-          function formatSummary(event) {
-            return `<div class="col-sm-5 align-self-center"> <h3>${event.summary} \/\/</h3> </div>`;
-          };
-          function formatEvent(event) {
-            var summary = formatSummary(event);
-            var startEndTime = formatStartEndTime(event);
-            var date = formatDate(event);
-            var location = formatLocation(event);
-            return `<div class="row gig-event">${date}${summary}<div class="col-sm-5 align-self-center">${startEndTime}${location}</div></div>`;
-          };
-          function printCalendar() {
-            var calendarId = '6jmgv23e4b4j44uhu0k7b56aac@group.calendar.google.com';
-            var apiKey = 'AIzaSyDi5AdwUeZaAWkCIISwcLBZ7vqKRN6HUJY';
-            var discoveryDocs = ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest']
-              var timeZone = 'America/New_York'
-              gapi.client.init({
-                apiKey: apiKey,
-                discoveryDocs: discoveryDocs
-              }).then(function() {
-                return gapi.client.calendar.events.list({
-                  'calendarId': calendarId,
-                  'singleEvents': true,
-                  'showDeleted': false,
-                  'timeMin': moment().subtract(1, 'month').format(),
-                  'timeZone': timeZone,
-                  'maxResults': 30,
-                  'orderBy': 'startTime'
-                });
-              }).then(function (response) {
-                if (response.result.items) {
-                  var upcomingEventRows = [];
-                  var pastEventRows = [];
-                  response.result.items.forEach(function(event) {
-                    if (moment(event.start.dateTime) > moment()) {
-                      upcomingEventRows.push(formatEvent(event));
-                    } else {
-                      pastEventRows.push(formatEvent(event));
-                    };
-                  });
-                  $('#upcoming-events').html(upcomingEventRows.join(""));
-                  $('#past-events').html(pastEventRows.reverse().join(""));
-                } else (function (reason) {
-                  console.log('Error: ' + reason.result.error.message);
-                })});
-          };
-          gapi.load('client', printCalendar);
-        </script>
-      </div>
+        };
+        function formatDate(event) {
+          var startsAtMoment = moment(event.start.dateTime);
+          var date = `<div class="col-sm-2 gig-date text-center"><p>${startsAtMoment.format("MMM")}<br/>${startsAtMoment.format("Do")}</p></div>`
+          return `${date}`;
+        };
+        function formatSummary(event) {
+          var fbEvent = formatFbLink(event);
+          var link = event.htmlLink;
+          if (fbEvent.length > 0) {
+            link = fbEvent;
+          }
+          var calLink = `<a href='${link}' target='_blank'><i class="far fa-calendar"></i></a>`;
+          return `<div class="col-sm-5 align-self-center"> <h3>${event.summary} \/\/ ${calLink}</h3> </div>`;
+        };
+        function formatEvent(event) {
+          var summary = formatSummary(event);
+          var startEndTime = formatStartEndTime(event);
+          var date = formatDate(event);
+          var location = formatLocation(event);
+          return `<div class="row gig-event">${date}${summary}<div class="col-sm-5 align-self-center">${startEndTime}${location}</div></div>`;
+        };
+        function printCalendar() {
+          var calendarId = '6jmgv23e4b4j44uhu0k7b56aac@group.calendar.google.com';
+          var apiKey = 'AIzaSyDi5AdwUeZaAWkCIISwcLBZ7vqKRN6HUJY';
+          var discoveryDocs = ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'];
+          var timeZone = 'America/New_York';
+          gapi.client.init({
+            apiKey: apiKey,
+            discoveryDocs: discoveryDocs
+          }).then(function() {
+            return gapi.client.calendar.events.list({
+              'calendarId': calendarId,
+              'singleEvents': true,
+              'showDeleted': false,
+              'timeMin': moment().subtract(1, 'month').format(),
+              'timeZone': timeZone,
+              'maxResults': 30,
+              'orderBy': 'startTime'
+            });
+          }).then(function (response) {
+            if (response.result.items) {
+              var upcomingEventRows = [];
+              var pastEventRows = [];
+              response.result.items.forEach(function(event) {
+                if (moment(event.start.dateTime) > moment()) {
+                  upcomingEventRows.push(formatEvent(event));
+                } else {
+                  pastEventRows.push(formatEvent(event));
+                };
+              });
+              $('#upcoming-events').html(upcomingEventRows.join(""));
+              $('#past-events').html(pastEventRows.reverse().join(""));
+            } else (function (reason) {
+              console.log('Error: ' + reason.result.error.message);
+            })});
+        };
+        gapi.load('client', printCalendar);
+      </script>
     </div>
   </section>
 
   <!-- Listen Section -->
   <section id="listen" class="projects-section bg-light">
     <div class="container">
-
       <!-- YouTube Playlist -->
-      <div class="row align-items-center no-gutters mb-4 mb-lg-5">
-        <div class="col-xl-12 col-lg-7">
-          <h2><i class="fas fa-angle-double-right mb-4"></i> Videos</h2>
+      <!-- <div class="row align&#45;items&#45;center no&#45;gutters"> -->
+      <div class="row align-items-center mb-4">
+        <h2 class="glow">Videos</h2>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-sm align-self-start">
+          <!-- <i class="fas fa&#45;angle&#45;double&#45;right mb&#45;4"></i>  -->
           <div class="embed-responsive embed-responsive-16by9">
             <iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLSoU9vTlVrOmPP_CnV9SksMYU8FX9qIJu" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
       </div>
+      </div>
 
       <!-- Playlists -->
       <div class="container">
-        <div class="row align-items-center mb-4 mb-lg-5">
+        <div class="row align-items-center mb-4">
           <div class="col-xl-12 col-lg-7">
-            <h2><i class="fas fa-angle-double-right mb-4"></i> Songs</h2>
+            <!-- <h2><i class="fas fa&#45;angle&#45;double&#45;right mb&#45;4"></i> Songs</h2> -->
+            <h2 class="glow">Songs</h2>
           </div>
         </div>
 
         <!-- Spotify Playlist -->
-        <div class="row align-items-center mb-4 mb-lg-5">
-          <div class="col-xl-12 col-lg-7">
+        <div class="row align-items-center">
+          <!-- Spotify Playlist -->
+          <div class="col-xl-6">
             <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/788290590&color=%2389937c&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
           </div>
-        </div>
-        <!-- Bandcamp Playlist -->
-        <div class="row align-items-center mb-4 mb-lg-5">
-          <div class="col-xl-12 col-lg-7">
+          <!-- Bandcamp Playlist -->
+          <div class="col-xl-6">
             <iframe width="100%" height="375" scrolling="no" frameborder="no" allow="autoplay" src="https://bandcamp.com/EmbeddedPlayer/album=3885090129/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/"></iframe>
           </div>
         </div>
+        <!-- Bandcamp Playlist -->
+        <!-- <div class="row align&#45;items&#45;center"> -->
+        <!--   <div class="col&#45;xl&#45;6"> -->
+        <!--     <iframe width="100%" height="375" scrolling="no" frameborder="no" allow="autoplay" src="https://bandcamp.com/EmbeddedPlayer/album=3885090129/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/"></iframe> -->
+        <!--   </div> -->
+        <!-- </div> -->
       </div>
-
-    </div>
   </section>
 
   <!-- Signup Section -->
