@@ -112,19 +112,21 @@
         </div>
       </div>
       <script>
-        function formatFbLink(event) {
+        function descriptionLinkMatching(event, matcher) {
           if (event.description) {
-            var link = event.description.split('<br>')[0];
-            var linkOrNull = link.match(/\>https:\/\/www.facebook.com\/events\/.*\/\</)[0].replace("<","").replace(">","");
-            if (linkOrNull === null) {
-              return "";
-            } else {
-// `<a href='${linkOrNull}' target='_blank'><i class="fab fa-facebook-f"></i> event </a>`;
-              return linkOrNull;
-            }
-          } else {
-            return "";
-          }
+            var hrefRegex = /href\s*=\s*(['"])(https?:\/\/.+?)\1/ig;
+            var maybeLinks = event.description.match(hrefRegex);
+            if (maybeLinks !== null) {
+              var matchingLinks = maybeLinks.map(l => l.replace(/href=/, "").replace(/"/g, "")).filter(l => l.match(matcher));
+              if (matchingLinks.length > 0) {
+                return matchingLinks[0];
+              };
+            };
+          };
+          return "";
+        };
+        function formatFbLink(event) {
+          return descriptionLinkMatching(event, /www.facebook.com/);
         };
         function formatLocation(event) {
           var linkOrNull = null;
@@ -133,15 +135,10 @@
             locationName = event.location.split(",")[0];
           };
           var result = `@ ${locationName}`;
-          if (event.description) {
-            var maybeLink = event.description.split('<br>');
-            if (maybeLink.length > 1) {
-              var linkOrNull = maybeLink[1].match(/>https:\/\/www.google.com\/maps\/.*\</)[0].replace("<","").replace(">","");
-              if (linkOrNull !== null) {
-                result = `@ <a href='${linkOrNull}' target='_blank'>${locationName}</a>`;
-              }
-            } 
-          }
+          var mapsLink = descriptionLinkMatching(event, /www.google.com/);
+          if (mapsLink.length > 0) {
+            result = `@ <a href='${mapsLink}' target='_blank'>${locationName}</a>`;
+          };
           return `<p>${result}</p>`;
         };
         function formatStartEndTime(event) {
