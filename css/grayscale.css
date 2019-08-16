@@ -196,9 +196,7 @@
 .projects-section h2 {
   color: #fff;
   font-family: 'Advent Pro', sans-serif;
-  border-bottom: 0.5rem solid #AF147B;
-  border-width: .25rem;
-  width: 10rem;
+  padding: 2rem 0.3rem;
 }
 
 .projects-section .featured-text {

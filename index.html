@@ -1,370 +1,417 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="Kira Ghandhi">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Kira Ghandhi">
 
-  <title>
-   kaelen
-  </title>
-  <link rel="icon" type="image/ico" href="../img/saxophone.png" />
+    <title>
+      kaelen
+    </title>
+    <link rel="icon" type="image/ico" href="../img/saxophone.png" />
 
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Custom fonts for this template -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-  <link href="css/grayscale.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/moment@2/moment.min.js"></script>
-  <script src="https://apis.google.com/js/api.js"></script>
+    <!-- Custom styles for this template -->
+    <link href="css/grayscale.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/moment@2/moment.min.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
 
-</head>
+  </head>
 
-<body id="page-top">
+  <body id="page-top">
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger glow" href="#page-top">kaelen ghandhi</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About Me</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#see">See Me</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#listen">Listen to Me</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contact Me</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <header class="masthead">
-    <div class="container d-flex h-100">
-      <div class="row align-self-center">
-        <div class="float-center">
-          <!-- <h1>Coming Soon</h1> -->
-          <div class="row mx-auto align-items-center">
-            <!-- <a href="#about" class="btn btn&#45;primary js&#45;scroll&#45;trigger">Find out more</a> -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- About Section -->
-  <section id="about" class="about-section text-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2 class="text-white mb-4">About Me</h2>
-          <p class="text-white">
-            Kaelen Ghandhi is an improviser, saxophonist, composer, and educator based in New York with a Jazz Performance degree from The New School.
-          </p> 
-          <p class="text-white">
-            He derives inspiration from both modern jazz and improvised music. He develops this command by studying with artists from Tony Malaby, Joe Morris, and Andrew Cyrille to Seamus Blake, Joel Frahm, and Chris Cheek. Kaelen is forward thinking and highly creative about the music he makes, but can also be deeply swinging when he wants to be.
-          </p>
-          <p class="text-white">
-            Kaelen’s main instrument is tenor saxophone, but having trained on many instruments from a young age Kaelen is also proficient in flute and clarinet as well as alto, soprano and baritone saxophones. His main projects right now include work with Aaron Rubinstein and Kevin Murray in the improvising trio Ghandhi/Murray/Rubinstein. Additionally Kaelen has performed with William Parker, Michael Larocca and Jonathan Milberger among others.
-          </p>
-        </div>
-      </div>
-      <a href="../img/resume.pdf" download class="btn btn-primary js-scroll-trigger">download my resume</a>
-    </div>
-  </section>
-
-  <!-- See Me Section -->
-  <section id="see" class="gigs-section text-center align-items-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 mx-auto">
-          <h2 class="mb-4 glow">Upcoming Events</h2>
-          <div class='upcoming-gigs' id="upcoming-events"></div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 mx-auto mb-4">
-          <a href="https://calendar.google.com/calendar/embed?src=6jmgv23e4b4j44uhu0k7b56aac%40group.calendar.google.com&ctz=America%2FNew_York" target='_blank' class="btn btn-primary js-scroll-trigger">see more on my calendar</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 mx-auto">
-          <h2 class="mb-4 glow">Past Events</h2>
-          <div class='upcoming-gigs' id="past-events"></div>
-        </div>
-      </div>
-      <script>
-        function descriptionLinkMatching(event, matcher) {
-          if (event.description) {
-            var hrefRegex = /href\s*=\s*(['"])(https?:\/\/.+?)\1/ig;
-            var maybeLinks = event.description.match(hrefRegex);
-            if (maybeLinks !== null) {
-              var matchingLinks = maybeLinks.map(l => l.replace(/href=/, "").replace(/"/g, "")).filter(l => l.match(matcher));
-              if (matchingLinks.length > 0) {
-                return matchingLinks[0];
-              };
-            };
-          };
-          return "";
-        };
-        function formatFbLink(event) {
-          return descriptionLinkMatching(event, /www.facebook.com/);
-        };
-        function formatLocation(event) {
-          var linkOrNull = null;
-          var locationName = `<i class="fas fa-street-view"></i>`;
-          if (event.location) {
-            locationName = event.location.split(",")[0];
-          };
-          var result = `@ ${locationName}`;
-          var mapsLink = descriptionLinkMatching(event, /www.google.com/);
-          if (mapsLink.length > 0) {
-            result = `@ <a href='${mapsLink}' target='_blank'>${locationName}</a>`;
-          };
-          return `<p>${result}</p>`;
-        };
-        function formatStartEndTime(event) {
-          var startsAtMoment = moment(event.start.dateTime);
-          var endsAtMoment = moment(event.end.dateTime);
-          var startsAt = startsAtMoment.format("MMMM Do YYYY, h:mm a");
-          if (startsAtMoment.isSame(endsAtMoment, 'date')) {
-            var endsAt = endsAtMoment.format("LT");
-          } else {
-            var endsAt = endsAtMoment.format("h:mm a MMMM Do");
-          }
-          if (event.start.date) {
-            return `<p>${startsAtMoment.format("MMMM Do YYYY")}</p>`;
-          } else {
-            return `<p>${startsAt} - ${endsAt}</p>`;
-          };
-        };
-        function formatDate(event) {
-          var startsAtMoment = moment(event.start.dateTime);
-          var date = `<div class="col-sm-2 gig-date text-center"><p>${startsAtMoment.format("MMM")}<br/>${startsAtMoment.format("Do")}</p></div>`
-          return `${date}`;
-        };
-        function formatSummary(event) {
-          var fbEvent = formatFbLink(event);
-          var link = event.htmlLink;
-          if (fbEvent.length > 0) {
-            link = fbEvent;
-          }
-          var calLink = `<a href='${link}' target='_blank'><i class="far fa-calendar"></i></a>`;
-          return `<div class="col-sm-5 align-self-center"> <h3>${event.summary} \/\/ ${calLink}</h3> </div>`;
-        };
-        function formatEvent(event) {
-          var summary = formatSummary(event);
-          var startEndTime = formatStartEndTime(event);
-          var date = formatDate(event);
-          var location = formatLocation(event);
-          return `<div class="row gig-event">${date}${summary}<div class="col-sm-5 align-self-center">${startEndTime}${location}</div></div>`;
-        };
-        function printCalendar() {
-          var calendarId = '6jmgv23e4b4j44uhu0k7b56aac@group.calendar.google.com';
-          var apiKey = 'AIzaSyDi5AdwUeZaAWkCIISwcLBZ7vqKRN6HUJY';
-          var discoveryDocs = ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'];
-          var timeZone = 'America/New_York';
-          gapi.client.init({
-            apiKey: apiKey,
-            discoveryDocs: discoveryDocs
-          }).then(function() {
-            return gapi.client.calendar.events.list({
-              'calendarId': calendarId,
-              'singleEvents': true,
-              'showDeleted': false,
-              'timeMin': moment().subtract(1, 'month').format(),
-              'timeZone': timeZone,
-              'maxResults': 30,
-              'orderBy': 'startTime'
-            });
-          }).then(function (response) {
-            if (response.result.items) {
-              var upcomingEventRows = [];
-              var pastEventRows = [];
-              response.result.items.forEach(function(event) {
-                if (moment(event.start.dateTime) > moment()) {
-                  upcomingEventRows.push(formatEvent(event));
-                } else {
-                  pastEventRows.push(formatEvent(event));
-                };
-              });
-              $('#upcoming-events').html(upcomingEventRows.join(""));
-              $('#past-events').html(pastEventRows.reverse().join(""));
-            } else (function (reason) {
-              console.log('Error: ' + reason.result.error.message);
-            })});
-        };
-        gapi.load('client', printCalendar);
-      </script>
-    </div>
-  </section>
-
-  <!-- Listen Section -->
-  <section id="listen" class="projects-section bg-light">
-    <div class="container">
-      <!-- YouTube Playlist -->
-      <!-- <div class="row align&#45;items&#45;center no&#45;gutters"> -->
-      <div class="row align-items-center mb-4">
-        <h2 class="glow">Videos</h2>
-      </div>
-      <div class="row align-items-center">
-        <div class="col-sm align-self-start">
-          <!-- <i class="fas fa&#45;angle&#45;double&#45;right mb&#45;4"></i>  -->
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLSoU9vTlVrOmPP_CnV9SksMYU8FX9qIJu" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-      </div>
-
-      <!-- Playlists -->
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <div class="row align-items-center mb-4">
-          <div class="col-xl-12 col-lg-7">
-            <!-- <h2><i class="fas fa&#45;angle&#45;double&#45;right mb&#45;4"></i> Songs</h2> -->
-            <h2 class="glow">Songs</h2>
-          </div>
-        </div>
-
-        <!-- Spotify Playlist -->
-        <div class="row align-items-center">
-          <!-- Spotify Playlist -->
-          <div class="col-xl-6">
-            <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/788290590&color=%2389937c&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-          </div>
-          <!-- Bandcamp Playlist -->
-          <div class="col-xl-6">
-            <iframe width="100%" height="375" scrolling="no" frameborder="no" allow="autoplay" src="https://bandcamp.com/EmbeddedPlayer/album=3885090129/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/"></iframe>
-          </div>
-        </div>
-        <!-- Bandcamp Playlist -->
-        <!-- <div class="row align&#45;items&#45;center"> -->
-        <!--   <div class="col&#45;xl&#45;6"> -->
-        <!--     <iframe width="100%" height="375" scrolling="no" frameborder="no" allow="autoplay" src="https://bandcamp.com/EmbeddedPlayer/album=3885090129/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/"></iframe> -->
-        <!--   </div> -->
-        <!-- </div> -->
-      </div>
-  </section>
-
-  <!-- Signup Section -->
-  <section id="contact" class="signup-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10 col-lg-8 mx-auto text-center">
-
-          <i class="far fa-bell fa-2x mb-2 text-white"></i>
-          <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
-
-          <script>
-						function submitEmail() {
-							var email = document.getElementById("inputEmail").value;
-              alert(`Sorry, emailing doesn't work yet!`);
-						};
-          </script>
-          <form onsubmit="return submitEmail();" class="form-inline d-flex">
-            <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address...">
-            <button type="submit" class="btn btn-primary mx-auto">Subscribe</button>
-          </form>
-
+        <a class="navbar-brand js-scroll-trigger glow" href="#page-top">kaelen ghandhi</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about">About Me</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#see">See Me</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#listen">Listen to Me</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Contact Me</a>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
-  </section>
+    </nav>
 
-  <!-- Contact Section -->
-  <section class="contact-section">
-    <div class="container">
-
-      <div class="row">
-
-        <div class="col-md-4 mb-3 mb-md-0">
-          <div class="card py-4 h-100">
-            <div class="card-body text-center">
-              <i class="fas fa-map-marked-alt text-primary mb-2"></i>
-              <h4 class="text-uppercase m-0">Address</h4>
-              <hr class="my-4">
-              <div class="small text-black-50">New York City, NY</div>
+    <header class="masthead">
+      <div class="container d-flex h-100">
+        <div class="row align-self-center">
+          <div class="float-center">
+            <div class="row mx-auto align-items-center">
             </div>
           </div>
         </div>
+      </div>
+    </header>
 
-        <div class="col-md-4 mb-3 mb-md-0">
-          <div class="card py-4 h-100">
-            <div class="card-body text-center">
-              <i class="fas fa-envelope text-primary mb-2"></i>
-              <h4 class="text-uppercase m-0">Email</h4>
-              <hr class="my-4">
-              <div class="small text-black-50">
-                <a href="#">kkcgjazz@gmail.com</a>
+    <!-- About Section -->
+    <section id="about" class="about-section text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2 class="text-white mb-4">About Me</h2>
+            <p class="text-white">
+              Kaelen Ghandhi is an improviser, saxophonist, composer, and educator based in New York with a Jazz Performance degree from The New School.
+            </p> 
+            <p class="text-white">
+              He derives inspiration from both modern jazz and improvised music. He develops this command by studying with artists from Tony Malaby, Joe Morris, and Andrew Cyrille to Seamus Blake, Joel Frahm, and Chris Cheek. Kaelen is forward thinking and highly creative about the music he makes, but can also be deeply swinging when he wants to be.
+            </p>
+            <p class="text-white">
+              Kaelen’s main instrument is tenor saxophone, but having trained on many instruments from a young age Kaelen is also proficient in flute and clarinet as well as alto, soprano and baritone saxophones. His main projects right now include work with Aaron Rubinstein and Kevin Murray in the improvising trio Ghandhi/Murray/Rubinstein. Additionally Kaelen has performed with William Parker, Michael Larocca and Jonathan Milberger among others.
+            </p>
+          </div>
+        </div>
+        <a href="../img/resume.pdf" download class="btn btn-primary js-scroll-trigger">download my resume</a>
+      </div>
+    </section>
+
+    <!-- See Me Section -->
+    <section id="see" class="gigs-section text-center align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 mx-auto">
+            <h2 class="mb-4 glow">Upcoming Events</h2>
+            <div class='upcoming-gigs' id="upcoming-events"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 mx-auto mb-4">
+            <a href="https://calendar.google.com/calendar/embed?src=6jmgv23e4b4j44uhu0k7b56aac%40group.calendar.google.com&ctz=America%2FNew_York" target='_blank' class="btn btn-primary js-scroll-trigger">see more on my calendar</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 mx-auto">
+            <h2 class="mb-4 glow">Past Events</h2>
+            <div class='upcoming-gigs' id="past-events"></div>
+          </div>
+        </div>
+        <script>
+          function descriptionLinkMatching(event, matcher) {
+            if (event.description) {
+              var hrefRegex = /href\s*=\s*(['"])(https?:\/\/.+?)\1/ig;
+              var maybeLinks = event.description.match(hrefRegex);
+              if (maybeLinks !== null) {
+                var matchingLinks = maybeLinks.map(l => l.replace(/href=/, "").replace(/"/g, "")).filter(l => l.match(matcher));
+                if (matchingLinks.length > 0) {
+                  return matchingLinks[0];
+                };
+              };
+            };
+            return "";
+          };
+          function formatFbLink(event) {
+            return descriptionLinkMatching(event, /www.facebook.com/);
+          };
+          function formatLocation(event) {
+            var linkOrNull = null;
+            var locationName = `<i class="fas fa-street-view"></i>`;
+            if (event.location) {
+              locationName = event.location.split(",")[0];
+            };
+            var result = `@ ${locationName}`;
+            var mapsLink = descriptionLinkMatching(event, /www.google.com/);
+            if (mapsLink.length > 0) {
+              result = `@ <a href='${mapsLink}' target='_blank'>${locationName}</a>`;
+            };
+            return `<p>${result}</p>`;
+          };
+          function formatStartEndTime(event) {
+            var startsAtMoment = moment(event.start.dateTime);
+            var endsAtMoment = moment(event.end.dateTime);
+            var startsAt = startsAtMoment.format("MMMM Do YYYY, h:mm a");
+            if (startsAtMoment.isSame(endsAtMoment, 'date')) {
+              var endsAt = endsAtMoment.format("LT");
+            } else {
+              var endsAt = endsAtMoment.format("h:mm a MMMM Do");
+            }
+            if (event.start.date) {
+              return `<p>${startsAtMoment.format("MMMM Do YYYY")}</p>`;
+            } else {
+              return `<p>${startsAt} - ${endsAt}</p>`;
+            };
+          };
+          function formatDate(event) {
+            var startsAtMoment = moment(event.start.dateTime);
+            var date = `<div class="col-sm-2 gig-date text-center"><p>${startsAtMoment.format("MMM")}<br/>${startsAtMoment.format("Do")}</p></div>`
+            return `${date}`;
+          };
+          function formatSummary(event) {
+            var fbEvent = formatFbLink(event);
+            var link = event.htmlLink;
+            if (fbEvent.length > 0) {
+              link = fbEvent;
+            }
+            var calLink = `<a href='${link}' target='_blank'><i class="far fa-calendar"></i></a>`;
+            return `<div class="col-sm-5 align-self-center"> <h3>${event.summary} \/\/ ${calLink}</h3> </div>`;
+          };
+          function formatEvent(event) {
+            var summary = formatSummary(event);
+            var startEndTime = formatStartEndTime(event);
+            var date = formatDate(event);
+            var location = formatLocation(event);
+            return `<div class="row gig-event">${date}${summary}<div class="col-sm-5 align-self-center">${startEndTime}${location}</div></div>`;
+          };
+          function printCalendar() {
+            var calendarId = '6jmgv23e4b4j44uhu0k7b56aac@group.calendar.google.com';
+            var apiKey = 'AIzaSyDi5AdwUeZaAWkCIISwcLBZ7vqKRN6HUJY';
+            var discoveryDocs = ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'];
+            var timeZone = 'America/New_York';
+            gapi.client.init({
+              apiKey: apiKey,
+              discoveryDocs: discoveryDocs
+            }).then(function() {
+              return gapi.client.calendar.events.list({
+                'calendarId': calendarId,
+                'singleEvents': true,
+                'showDeleted': false,
+                'timeMin': moment().subtract(1, 'month').format(),
+                'timeZone': timeZone,
+                'maxResults': 30,
+                'orderBy': 'startTime'
+              });
+            }).then(function (response) {
+              if (response.result.items) {
+                var upcomingEventRows = [];
+                var pastEventRows = [];
+                response.result.items.forEach(function(event) {
+                  if (moment(event.start.dateTime) > moment()) {
+                    upcomingEventRows.push(formatEvent(event));
+                  } else {
+                    pastEventRows.push(formatEvent(event));
+                  };
+                });
+                $('#upcoming-events').html(upcomingEventRows.join(""));
+                $('#past-events').html(pastEventRows.reverse().join(""));
+              } else (function (reason) {
+                console.log('Error: ' + reason.result.error.message);
+              })});
+          };
+          gapi.load('client', printCalendar);
+        </script>
+      </div>
+    </section>
+
+    <!-- Listen Section -->
+    <section id="listen" class="projects-section bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="mx-auto">
+            <h2 class="glow">Listen</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-8 col-md-8 mb-4 mx-auto">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/videoseries?list=PLSoU9vTlVrOmPP_CnV9SksMYU8FX9qIJu" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-8 mb-4 mx-auto">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/788290590&color=%2389937c&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-8 mb-4 mx-auto">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe scrolling="no" frameborder="no" allow="autoplay" src="https://bandcamp.com/EmbeddedPlayer/album=3885090129/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- <section id="listen" class="projects&#45;section bg&#45;light"> -->
+    <!--   <div id="carouselExampleControls" class="carousel" data&#45;ride="false"> -->
+    <!--     <div class="carousel&#45;inner"> -->
+    <!--       <div class="carousel&#45;item active"> -->
+    <!--         <div class="col&#45;lg&#45;6 col&#45;md&#45;12 mb&#45;4"> -->
+    <!--           <div class="embed&#45;responsive embed&#45;responsive&#45;16by9"> -->
+    <!--             <iframe class="embed&#45;responsive&#45;item" src="https://www.youtube.com/embed/videoseries?list=PLSoU9vTlVrOmPP_CnV9SksMYU8FX9qIJu" frameborder="0" allow="accelerometer; autoplay; encrypted&#45;media; gyroscope; picture&#45;in&#45;picture" allowfullscreen></iframe> -->
+    <!--           </div> -->
+    <!--         </div> -->
+    <!--       </div> -->
+    <!--       <div class="carousel&#45;item"> -->
+    <!--         <div class="col&#45;lg&#45;6 col&#45;md&#45;12 mb&#45;4"> -->
+    <!--           <div class="embed&#45;responsive embed&#45;responsive&#45;16by9"> -->
+    <!--             <iframe scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/788290590&#38;color=%2389937c&#38;auto_play=false&#38;hide_related=false&#38;show_comments=true&#38;show_user=true&#38;show_reposts=false&#38;show_teaser=true"></iframe> -->
+    <!--           </div> -->
+    <!--         </div> -->
+    <!--       </div> -->
+    <!--       <div class="carousel&#45;item"> -->
+    <!--         <div class="col&#45;lg&#45;6 col&#45;md&#45;12 mb&#45;4"> -->
+    <!--           <div class="embed&#45;responsive embed&#45;responsive&#45;16by9"> -->
+    <!--             <iframe scrolling="no" frameborder="no" allow="autoplay" src="https://bandcamp.com/EmbeddedPlayer/album=3885090129/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/"></iframe> -->
+    <!--           </div> -->
+    <!--         </div> -->
+    <!--       </div> -->
+    <!--     </div> -->
+    <!--     <a class="carousel&#45;control&#45;prev" href="#carouselExampleControls" role="button" data&#45;slide="prev"> -->
+    <!--       <span class="carousel&#45;control&#45;prev&#45;icon" aria&#45;hidden="true"></span> -->
+    <!--       <span class="sr&#45;only">Previous</span> -->
+    <!--     </a> -->
+    <!--     <a class="carousel&#45;control&#45;next" href="#carouselExampleControls" role="button" data&#45;slide="next"> -->
+    <!--       <span class="carousel&#45;control&#45;next&#45;icon" aria&#45;hidden="true"></span> -->
+    <!--       <span class="sr&#45;only">Next</span> -->
+    <!--     </a> -->
+    <!--   </div> -->
+    <!-- </section> -->
+    <!-- <section id="listen" class="projects&#45;section bg&#45;light"> -->
+    <!--   <div class="container"> -->
+    <!--     <!&#45;&#45; YouTube Playlist &#45;&#45;> -->
+    <!--     <!&#45;&#45; <div class="row align&#38;#45;items&#38;#45;center no&#38;#45;gutters"> &#45;&#45;> -->
+    <!--     <div class="row align&#45;items&#45;center mb&#45;4"> -->
+    <!--       <h2 class="glow">Videos</h2> -->
+    <!--     </div> -->
+    <!--     <div class="row align&#45;items&#45;center"> -->
+    <!--       <div class="col&#45;sm align&#45;self&#45;start"> -->
+    <!--         <!&#45;&#45; <i class="fas fa&#38;#45;angle&#38;#45;double&#38;#45;right mb&#38;#45;4"></i>  &#45;&#45;> -->
+    <!--         <div class="embed&#45;responsive embed&#45;responsive&#45;16by9"> -->
+    <!--           <iframe class="embed&#45;responsive&#45;item" width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLSoU9vTlVrOmPP_CnV9SksMYU8FX9qIJu" frameborder="0" allow="accelerometer; autoplay; encrypted&#45;media; gyroscope; picture&#45;in&#45;picture" allowfullscreen></iframe> -->
+    <!--         </div> -->
+    <!--       </div> -->
+    <!--     </div> -->
+    <!--     </div> -->
+    <!--  -->
+    <!--     <!&#45;&#45; Playlists &#45;&#45;> -->
+    <!--     <div class="container"> -->
+    <!--       <div class="row align&#45;items&#45;center mb&#45;4"> -->
+    <!--         <div class="col&#45;xl&#45;12 col&#45;lg&#45;7"> -->
+    <!--           <!&#45;&#45; <h2><i class="fas fa&#38;#45;angle&#38;#45;double&#38;#45;right mb&#38;#45;4"></i> Songs</h2> &#45;&#45;> -->
+    <!--           <h2 class="glow">Songs</h2> -->
+    <!--         </div> -->
+    <!--       </div> -->
+    <!--  -->
+    <!--       <!&#45;&#45; Spotify Playlist &#45;&#45;> -->
+    <!--       <div class="row align&#45;items&#45;center"> -->
+    <!--         <!&#45;&#45; Spotify Playlist &#45;&#45;> -->
+    <!--         <div class="col&#45;xl&#45;6"> -->
+    <!--           <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/788290590&#38;color=%2389937c&#38;auto_play=false&#38;hide_related=false&#38;show_comments=true&#38;show_user=true&#38;show_reposts=false&#38;show_teaser=true"></iframe> -->
+    <!--         </div> -->
+    <!--         <!&#45;&#45; Bandcamp Playlist &#45;&#45;> -->
+    <!--         <div class="col&#45;xl&#45;6"> -->
+    <!--           <iframe width="100%" height="375" scrolling="no" frameborder="no" allow="autoplay" src="https://bandcamp.com/EmbeddedPlayer/album=3885090129/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/"></iframe> -->
+    <!--         </div> -->
+    <!--       </div> -->
+    <!--     </div> -->
+    <!-- </section> -->
+
+    <!-- Signup Section -->
+    <section id="contact" class="signup-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-lg-8 mx-auto text-center">
+            <i class="far fa-bell fa-2x mb-2 text-white"></i>
+            <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
+            <!-- <script type="text/javascript">var submitted=false;</script> -->
+            <!-- <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {alert("thank you");}"></iframe> -->
+            <form class="form-inline d-flex" action="https://docs.google.com/forms/d/e/1FAIpQLSePshr8Mn3a80Btf6vl1gpbdZOZhCYDn-H61n_3CIyRVGCXog/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
+              <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address..." name="emailAddress">
+              <button type="submit" class="btn btn-primary mx-auto">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-md-4 mb-3 mb-md-0">
+            <div class="card py-4 h-100">
+              <div class="card-body text-center">
+                <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                <h4 class="text-uppercase m-0">Address</h4>
+                <hr class="my-4">
+                <div class="small text-black-50">New York City, NY</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-3 mb-md-0">
+            <div class="card py-4 h-100">
+              <div class="card-body text-center">
+                <i class="fas fa-envelope text-primary mb-2"></i>
+                <h4 class="text-uppercase m-0">Email</h4>
+                <hr class="my-4">
+                <div class="small text-black-50">
+                  <a href="#">kkcgjazz@gmail.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-3 mb-md-0">
+            <div class="card py-4 h-100">
+              <div class="card-body text-center">
+                <i class="fas fa-mobile-alt text-primary mb-2"></i>
+                <h4 class="text-uppercase m-0">Phone</h4>
+                <hr class="my-4">
+                <div class="small text-black-50">+1 (650) 504-0906</div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-md-4 mb-3 mb-md-0">
-          <div class="card py-4 h-100">
-            <div class="card-body text-center">
-              <i class="fas fa-mobile-alt text-primary mb-2"></i>
-              <h4 class="text-uppercase m-0">Phone</h4>
-              <hr class="my-4">
-              <div class="small text-black-50">+1 (650) ***-0906</div>
-            </div>
-          </div>
+        <div class="social d-flex justify-content-center">
+          <a href="https://soundcloud.com/kaelen-ghandhi-1" target="_blank" class="mx-2">
+            <i class="fab fa-soundcloud"></i>
+          </a>
+          <a href="https://www.facebook.com/kaeleng/" target="_blank" class="mx-2">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/musicalk/" target="_blank" class="mx-2">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://flightschoolnyc.bandcamp.com/releases" target="_blank" class="mx-2">
+            <i class="fab fa-bandcamp"></i>
+          </a>
         </div>
       </div>
+    </section>
 
-      <div class="social d-flex justify-content-center">
-        <a href="https://soundcloud.com/kaelen-ghandhi-1" target="_blank" class="mx-2">
-          <i class="fab fa-soundcloud"></i>
-        </a>
-        <a href="https://www.facebook.com/kaeleng/" target="_blank" class="mx-2">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://www.instagram.com/musicalk/" target="_blank" class="mx-2">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://flightschoolnyc.bandcamp.com/releases" target="_blank" class="mx-2">
-          <i class="fab fa-bandcamp"></i>
-        </a>
+    <!-- Footer -->
+    <footer class="bg-green small text-center text-white-50">
+      <div class="container">
+        Copyright &copy; Kira 2019
       </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- Footer -->
-  <footer class="bg-green small text-center text-white-50">
-    <div class="container">
-      Copyright &copy; Kira 2019
-    </div>
-  </footer>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Plugin JavaScript -->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for this template -->
+    <script src="js/grayscale.min.js"></script>
 
-  <!-- Custom scripts for this template -->
-  <script src="js/grayscale.min.js"></script>
-
-</body>
-
+  </body>
 </html>

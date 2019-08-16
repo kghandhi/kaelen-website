@@ -114,7 +114,7 @@ function js() {
 // Watch files
 function watchFiles() {
   gulp.watch("./scss/**/*", css);
-  gulp.watch("./js/**/*", js);
+  // gulp.watch("./js/**/*", js);
   gulp.watch("./**/*.html", browserSyncReload);
 }
 
@@ -127,7 +127,7 @@ const watch = gulp.series(build, gulp.parallel(watchFiles, browserSync));
 exports.css = css;
 exports.js = js;
 exports.clean = clean;
-exports.vendor = vendor;
+exports.lvendor = vendor;
 exports.build = build;
 exports.watch = watch;
 exports.default = build;
