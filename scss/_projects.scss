@@ -5,7 +5,7 @@
   background: linear-gradient(to bottom, #{fade-out($black, .4)} 0%,#{fade-out($dark-blue, .5)} 75%,$midnight-blue 100%), url('../img/floor.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 10rem 0;
+  padding: 3rem 0 4rem 0;
   h2 {
     color: $white;
     font-family: 'Advent Pro', sans-serif;

@@ -169,8 +169,7 @@
 }
 
 .about-section {
-  padding-top: 10rem;
-  padding-bottom: 10rem;
+  padding: 10rem 0 10rem 0;
   background: -webkit-gradient(linear, left top, left bottom, from(#040437), color-stop(#0B0763), to(#000000));
   background: linear-gradient(to bottom, #040437, #0B0763, #000000);
 }
@@ -190,7 +189,7 @@
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(15, 8, 135, 0.5) 75%, #08041E 100%), url("../img/floor.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 10rem 0;
+  padding: 3rem 0 4rem 0;
 }
 
 .projects-section h2 {
@@ -295,14 +294,14 @@
 }
 
 .gigs-section {
-  padding-top: 10rem;
-  padding-bottom: 10rem;
+  padding: 3rem 0 4rem 0;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(175, 20, 123, 0.8)), color-stop(75%, rgba(35, 22, 204, 0.7)), to(#000000)), url("../img/wall.jpg");
   background: linear-gradient(to bottom, rgba(175, 20, 123, 0.8) 0%, rgba(35, 22, 204, 0.7) 75%, #000000 100%), url("../img/wall.jpg");
 }
 
 .gigs-section h2 {
   font-family: 'Advent Pro', sans-serif;
+  padding: 1rem;
   color: #CBCCD4;
 }
 
@@ -323,7 +322,7 @@
   padding: 2rem;
 }
 
-.gigs-section .upcoming-gigs {
+.gigs-section .gig-list {
   padding: 2rem;
   align: center;
 }

@@ -1,9 +1,9 @@
 .gigs-section {
-  padding-top: 10rem;
-  padding-bottom: 10rem;
+  padding: 3rem 0 4rem 0;
   background: linear-gradient(to bottom, #{fade-out($primary, .2)} 0%, #{fade-out($medium-blue, .3)} 75%, $black 100%,), url('../img/wall.jpg');
   h2 {
     font-family: 'Advent Pro', sans-serif;
+    padding: 1rem;
     color: $white-blue;
   }
   h3 {
@@ -20,7 +20,7 @@
     display: block;
     padding: 2rem;
   }
-  .upcoming-gigs {
+  .gig-list {
     padding: 2rem;
     align: center;
   }
