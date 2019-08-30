@@ -10,8 +10,6 @@
 @import 'gigs.scss';
 @import '404.scss';
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
-// @import url('https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap');
-// @import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Advent+Pro&display=swap');
 
 body {
@@ -36,7 +34,7 @@ a {
   background-color: $primary !important;
 }
 
-.bg-green {
+.bg-dark-navy {
   background-color: $dark-navy !important;
 }
 

@@ -18,8 +18,6 @@
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/grayscale.min.css" rel="stylesheet">
@@ -58,14 +56,14 @@
     </nav>
 
     <header class="masthead">
-      <div class="container d-flex h-100">
-        <div class="row align-self-center">
-          <div class="float-center">
-            <div class="row mx-auto align-items-center">
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- <div class="container d&#45;flex h&#45;100"> -->
+      <!--   <div class="row align&#45;self&#45;center"> -->
+      <!--     <div class="float&#45;center"> -->
+      <!--       <div class="row mx&#45;auto align&#45;items&#45;center"> -->
+      <!--       </div> -->
+      <!--     </div> -->
+      <!--   </div> -->
+      <!-- </div> -->
     </header>
 
     <!-- About Section -->
@@ -94,7 +92,6 @@
       <div class="container">
         <div class="row">
           <div class="col-12 mx-auto">
-            <h2 class="mb-4 glow">Upcoming Events</h2>
             <div class='upcoming-gigs' id="upcoming-events"></div>
           </div>
         </div>
@@ -105,7 +102,6 @@
         </div>
         <div class="row">
           <div class="col-12 mx-auto">
-            <h2 class="mb-4 glow">Past Events</h2>
             <div class='upcoming-gigs' id="past-events"></div>
           </div>
         </div>
@@ -133,9 +129,12 @@
               locationName = event.location.split(",")[0];
             };
             var result = `@ ${locationName}`;
-            var mapsLink = descriptionLinkMatching(event, /www.google.com/);
-            if (mapsLink.length > 0) {
-              result = `@ <a href='${mapsLink}' target='_blank'>${locationName}</a>`;
+            var mapsLinkGoogle = descriptionLinkMatching(event, /www.google.com/);
+            var mapsLinkGoo = descriptionLinkMatching(event, /goo.gl/);
+            if (mapsLinkGoogle.length > 0) {
+              result = `@ <a href='${mapsLinkGoogle}' target='_blank'>${locationName}</a>`;
+            } else if (mapsLinkGoo.length > 0) {
+              result = `@ <a href='${mapsLinkGoo}' target='_blank'>${locationName}</a>`;
             };
             return `<p>${result}</p>`;
           };
@@ -197,13 +196,22 @@
               if (response.result.items) {
                 var upcomingEventRows = [];
                 var pastEventRows = [];
-                response.result.items.forEach(function(event) {
+                var sortedEvents = response.result.items.sort(function (e1, e2) {
+                  return e1.start.dateTime > e2.start.dateTime;
+                });
+                sortedEvents.forEach(function(event) {
                   if (moment(event.start.dateTime) > moment()) {
                     upcomingEventRows.push(formatEvent(event));
                   } else {
                     pastEventRows.push(formatEvent(event));
                   };
                 });
+                if (upcomingEventRows.length > 0) {
+                  upcomingEventRows.unshift("<h2 class='mb-4 glow'>Upcoming Events</h2>");
+                };
+                if (pastEventRows.length > 0) {
+                  upcomingEventRows.unshift("<h2 class='mb-4 glow'>Past Events</h2>");
+                };
                 $('#upcoming-events').html(upcomingEventRows.join(""));
                 $('#past-events').html(pastEventRows.reverse().join(""));
               } else (function (reason) {
@@ -244,80 +252,6 @@
         </div>
       </div>
     </section>
-    <!-- <section id="listen" class="projects&#45;section bg&#45;light"> -->
-    <!--   <div id="carouselExampleControls" class="carousel" data&#45;ride="false"> -->
-    <!--     <div class="carousel&#45;inner"> -->
-    <!--       <div class="carousel&#45;item active"> -->
-    <!--         <div class="col&#45;lg&#45;6 col&#45;md&#45;12 mb&#45;4"> -->
-    <!--           <div class="embed&#45;responsive embed&#45;responsive&#45;16by9"> -->
-    <!--             <iframe class="embed&#45;responsive&#45;item" src="https://www.youtube.com/embed/videoseries?list=PLSoU9vTlVrOmPP_CnV9SksMYU8FX9qIJu" frameborder="0" allow="accelerometer; autoplay; encrypted&#45;media; gyroscope; picture&#45;in&#45;picture" allowfullscreen></iframe> -->
-    <!--           </div> -->
-    <!--         </div> -->
-    <!--       </div> -->
-    <!--       <div class="carousel&#45;item"> -->
-    <!--         <div class="col&#45;lg&#45;6 col&#45;md&#45;12 mb&#45;4"> -->
-    <!--           <div class="embed&#45;responsive embed&#45;responsive&#45;16by9"> -->
-    <!--             <iframe scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/788290590&#38;color=%2389937c&#38;auto_play=false&#38;hide_related=false&#38;show_comments=true&#38;show_user=true&#38;show_reposts=false&#38;show_teaser=true"></iframe> -->
-    <!--           </div> -->
-    <!--         </div> -->
-    <!--       </div> -->
-    <!--       <div class="carousel&#45;item"> -->
-    <!--         <div class="col&#45;lg&#45;6 col&#45;md&#45;12 mb&#45;4"> -->
-    <!--           <div class="embed&#45;responsive embed&#45;responsive&#45;16by9"> -->
-    <!--             <iframe scrolling="no" frameborder="no" allow="autoplay" src="https://bandcamp.com/EmbeddedPlayer/album=3885090129/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/"></iframe> -->
-    <!--           </div> -->
-    <!--         </div> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--     <a class="carousel&#45;control&#45;prev" href="#carouselExampleControls" role="button" data&#45;slide="prev"> -->
-    <!--       <span class="carousel&#45;control&#45;prev&#45;icon" aria&#45;hidden="true"></span> -->
-    <!--       <span class="sr&#45;only">Previous</span> -->
-    <!--     </a> -->
-    <!--     <a class="carousel&#45;control&#45;next" href="#carouselExampleControls" role="button" data&#45;slide="next"> -->
-    <!--       <span class="carousel&#45;control&#45;next&#45;icon" aria&#45;hidden="true"></span> -->
-    <!--       <span class="sr&#45;only">Next</span> -->
-    <!--     </a> -->
-    <!--   </div> -->
-    <!-- </section> -->
-    <!-- <section id="listen" class="projects&#45;section bg&#45;light"> -->
-    <!--   <div class="container"> -->
-    <!--     <!&#45;&#45; YouTube Playlist &#45;&#45;> -->
-    <!--     <!&#45;&#45; <div class="row align&#38;#45;items&#38;#45;center no&#38;#45;gutters"> &#45;&#45;> -->
-    <!--     <div class="row align&#45;items&#45;center mb&#45;4"> -->
-    <!--       <h2 class="glow">Videos</h2> -->
-    <!--     </div> -->
-    <!--     <div class="row align&#45;items&#45;center"> -->
-    <!--       <div class="col&#45;sm align&#45;self&#45;start"> -->
-    <!--         <!&#45;&#45; <i class="fas fa&#38;#45;angle&#38;#45;double&#38;#45;right mb&#38;#45;4"></i>  &#45;&#45;> -->
-    <!--         <div class="embed&#45;responsive embed&#45;responsive&#45;16by9"> -->
-    <!--           <iframe class="embed&#45;responsive&#45;item" width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLSoU9vTlVrOmPP_CnV9SksMYU8FX9qIJu" frameborder="0" allow="accelerometer; autoplay; encrypted&#45;media; gyroscope; picture&#45;in&#45;picture" allowfullscreen></iframe> -->
-    <!--         </div> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--     </div> -->
-    <!--  -->
-    <!--     <!&#45;&#45; Playlists &#45;&#45;> -->
-    <!--     <div class="container"> -->
-    <!--       <div class="row align&#45;items&#45;center mb&#45;4"> -->
-    <!--         <div class="col&#45;xl&#45;12 col&#45;lg&#45;7"> -->
-    <!--           <!&#45;&#45; <h2><i class="fas fa&#38;#45;angle&#38;#45;double&#38;#45;right mb&#38;#45;4"></i> Songs</h2> &#45;&#45;> -->
-    <!--           <h2 class="glow">Songs</h2> -->
-    <!--         </div> -->
-    <!--       </div> -->
-    <!--  -->
-    <!--       <!&#45;&#45; Spotify Playlist &#45;&#45;> -->
-    <!--       <div class="row align&#45;items&#45;center"> -->
-    <!--         <!&#45;&#45; Spotify Playlist &#45;&#45;> -->
-    <!--         <div class="col&#45;xl&#45;6"> -->
-    <!--           <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/788290590&#38;color=%2389937c&#38;auto_play=false&#38;hide_related=false&#38;show_comments=true&#38;show_user=true&#38;show_reposts=false&#38;show_teaser=true"></iframe> -->
-    <!--         </div> -->
-    <!--         <!&#45;&#45; Bandcamp Playlist &#45;&#45;> -->
-    <!--         <div class="col&#45;xl&#45;6"> -->
-    <!--           <iframe width="100%" height="375" scrolling="no" frameborder="no" allow="autoplay" src="https://bandcamp.com/EmbeddedPlayer/album=3885090129/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/"></iframe> -->
-    <!--         </div> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!-- </section> -->
 
     <!-- Signup Section -->
     <section id="contact" class="signup-section">
@@ -326,8 +260,6 @@
           <div class="col-md-10 col-lg-8 mx-auto text-center">
             <i class="far fa-bell fa-2x mb-2 text-white"></i>
             <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
-            <!-- <script type="text/javascript">var submitted=false;</script> -->
-            <!-- <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {alert("thank you");}"></iframe> -->
             <form class="form-inline d-flex" action="https://docs.google.com/forms/d/e/1FAIpQLSePshr8Mn3a80Btf6vl1gpbdZOZhCYDn-H61n_3CIyRVGCXog/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
               <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address..." name="emailAddress">
               <button type="submit" class="btn btn-primary mx-auto">Subscribe</button>
@@ -342,7 +274,6 @@
       <div class="container">
 
         <div class="row">
-
           <div class="col-md-4 mb-3 mb-md-0">
             <div class="card py-4 h-100">
               <div class="card-body text-center">
@@ -397,7 +328,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-green small text-center text-white-50">
+    <footer class="bg-dark-navy small text-center text-white-50">
       <div class="container">
         Copyright &copy; Kira 2019
       </div>
