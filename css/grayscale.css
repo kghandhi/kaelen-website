@@ -307,9 +307,11 @@
 
 .gigs-section h3 {
   color: #2316CC;
+  padding: 1rem 0;
   font-family: 'Advent Pro', sans-serif;
   font-size: 1.4em;
   text-align: center;
+  overflow-wrap: break-word;
 }
 
 .gigs-section h4 {
@@ -332,11 +334,11 @@
   color: #fff;
   font-size: 1.3rem;
   background: #0B0763;
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
 .gigs-section .gig-event {
-  background: #F6F3F6;
+  background: rgba(246, 243, 246, 0.7);
   border: solid;
   border-width: thin;
   border-color: #000000;
