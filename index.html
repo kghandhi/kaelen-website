@@ -117,119 +117,40 @@
           </div>
         </div>
         <script>
-          function descriptionLinkMatching(event, matcher) {
-            if (event.description) {
-              var hrefRegex = /href\s*=\s*(['"])(https?:\/\/.+?)\1/ig;
-              var maybeLinks = event.description.match(hrefRegex);
-              if (maybeLinks !== null) {
-                var matchingLinks = maybeLinks.map(l => l.replace(/href=/, "").replace(/"/g, "")).filter(l => l.match(matcher));
-                if (matchingLinks.length > 0) {
-                  return matchingLinks[0];
-                };
-              };
-            };
-            return "";
-          };
-          function formatFbLink(event) {
-            return descriptionLinkMatching(event, /www.facebook.com/);
-          };
-          function formatLocation(event) {
-            var linkOrNull = null;
-            var locationName = `<i class="fas fa-street-view"></i>`;
-            if (event.location) {
-              locationName = event.location.split(",")[0];
-            };
-            var result = `@ ${locationName}`;
-            var mapsLinkGoogle = descriptionLinkMatching(event, /www.google.com/);
-            var mapsLinkGoo = descriptionLinkMatching(event, /goo.gl/);
-            if (mapsLinkGoogle.length > 0) {
-              result = `@ <a href='${mapsLinkGoogle}' target='_blank'>${locationName}</a>`;
-            } else if (mapsLinkGoo.length > 0) {
-              result = `@ <a href='${mapsLinkGoo}' target='_blank'>${locationName}</a>`;
-            };
-            return `<p>${result}</p>`;
-          };
-          function formatStartEndTime(event) {
-            var startsAtMoment = moment(event.start.dateTime);
-            var endsAtMoment = moment(event.end.dateTime);
-            var startsAt = startsAtMoment.format("MMMM Do YYYY, h:mm a");
-            if (startsAtMoment.isSame(endsAtMoment, 'date')) {
-              var endsAt = endsAtMoment.format("LT");
-            } else {
-              var endsAt = endsAtMoment.format("h:mm a MMMM Do");
-            }
-            if (event.start.date) {
-              return `<p>${startsAtMoment.format("MMMM Do YYYY")}</p>`;
-            } else {
-              return `<p>${startsAt} - ${endsAt}</p>`;
-            };
-          };
-          function formatDate(event) {
-            var startsAtMoment = moment(event.start.dateTime);
-            var date = `<div class="col-sm-2 gig-date text-center"><p>${startsAtMoment.format("MMM")}<br/>${startsAtMoment.format("Do")}</p></div>`
-            return `${date}`;
-          };
-          function formatSummary(event) {
-            var fbEvent = formatFbLink(event);
-            var link = event.htmlLink;
-            if (fbEvent.length > 0) {
-              link = fbEvent;
-            }
-            var calLink = `<a href='${link}' target='_blank'><i class="far fa-calendar"></i></a>`;
-            return `<div class="col-sm-5 align-self-center"> <h3>${event.summary} \/\/ ${calLink}</h3> </div>`;
-          };
-          function formatEvent(event) {
-            var summary = formatSummary(event);
-            var startEndTime = formatStartEndTime(event);
-            var date = formatDate(event);
-            var location = formatLocation(event);
-            return `<div class="row gig-event">${date}${summary}<div class="col-sm-5 align-self-center">${startEndTime}${location}</div></div>`;
-          };
-          function printCalendar() {
-            var calendarId = '6jmgv23e4b4j44uhu0k7b56aac@group.calendar.google.com';
+          function initClient() {
             var apiKey = 'AIzaSyDi5AdwUeZaAWkCIISwcLBZ7vqKRN6HUJY';
             var discoveryDocs = ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'];
-            var timeZone = 'America/New_York';
-            gapi.client.init({
+            return gapi.client.init({
               apiKey: apiKey,
               discoveryDocs: discoveryDocs
-            }).then(function() {
-              return gapi.client.calendar.events.list({
-                'calendarId': calendarId,
-                'singleEvents': true,
-                'showDeleted': false,
-                'timeMin': moment().subtract(1, 'month').format(),
-                'timeZone': timeZone,
-                'maxResults': 30,
-                'orderBy': 'startTime'
-              });
-            }).then(function (response) {
-              if (response.result.items) {
-                var upcomingEventRows = [];
-                var pastEventRows = [];
-                var sortedEvents = response.result.items.sort(function (e1, e2) {
-                  return e1.start.dateTime > e2.start.dateTime;
-                });
-                sortedEvents.forEach(function(event) {
-                  if (moment(event.start.dateTime) > moment()) {
-                    upcomingEventRows.push(formatEvent(event));
-                  } else {
-                    pastEventRows.push(formatEvent(event));
-                  };
-                });
-                if (upcomingEventRows.length > 0) {
-                  upcomingEventRows.unshift("<h2 class='mb-4 glow'>Upcoming Events</h2>");
-                };
-                if (pastEventRows.length > 0) {
-                  upcomingEventRows.unshift("<h2 class='mb-4 glow'>Past Events</h2>");
-                };
-                $('#upcoming-events').html(upcomingEventRows.join(""));
-                $('#past-events').html(pastEventRows.reverse().join(""));
-              } else (function (reason) {
-                console.log('Error: ' + reason.result.error.message);
-              })});
+            });
           };
-          gapi.load('client', printCalendar);
+          function fetchEventsList() {
+            var calendarId = '6jmgv23e4b4j44uhu0k7b56aac@group.calendar.google.com';
+            var timeZone = 'America/New_York';
+            return gapi.client.calendar.events.list({
+              'calendarId': calendarId,
+              'singleEvents': true,
+              'showDeleted': false,
+              'timeMin': moment().subtract(1, 'month').format(),
+              'timeZone': timeZone,
+              'maxResults': 30,
+              'orderBy': 'startTime'
+            });
+          };
+          function setEvents(response) {
+            if (response.result.items) {
+              var events = parseEvents(response.result.items);
+              $('#upcoming-events').html(events.upcoming);
+              $('#past-events').html(events.past);
+            } else (function (reason) {
+              console.log('Error: ' + reason.result.error.message);
+            })
+          };
+          function execute() {
+            initClient().then(fetchEventsList).then(setEvents);
+          };
+          gapi.load('client', execute);
         </script>
       </div>
     </section>
@@ -354,6 +275,7 @@
 
     <!-- Custom scripts for this template -->
     <script src="js/grayscale.min.js"></script>
+    <script src="js/calendar.min.js"></script>
 
   </body>
 </html>
