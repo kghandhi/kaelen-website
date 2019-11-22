@@ -1,10 +1,18 @@
 # Kaelen's Website
 
-Cloned from git@github.com:BlackrockDigital/startbootstrap-grayscale.git
+A professional website for Jazz musician Kaelen Ghandhi.
 
-After installation, run `npm install` and then run `npm start` which will open up a preview of the template in your default browser, watch for changes to core template files, and live reload the browser when changes are saved. You can view the `gulpfile.js` to see which tasks are included with the dev environment.
+## Running
 
-#### Gulp Tasks
+Cloned from [bootstrap grayscale](git@github.com:BlackrockDigital/startbootstrap-grayscale.git).
+
+To build,
+```
+npm install # install dependencies
+npm start # start the browsersync
+```
+
+### Gulp Tasks
 
 - `gulp` the default task that builds everything
 - `gulp watch` browserSync opens the project in your default browser and live reloads when changes are made
