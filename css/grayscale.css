@@ -225,6 +225,10 @@
   }
 }
 
+.projects-section iframe {
+  display: inline !important;
+}
+
 .signup-section {
   padding: 12rem 0;
   width: 100%;

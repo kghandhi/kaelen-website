@@ -23,6 +23,7 @@
     <link href="css/grayscale.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/moment@2/moment.min.js"></script>
     <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.3.2.js"></script>
 
   </head>
 
@@ -181,8 +182,37 @@
               <iframe scrolling="no" frameborder="no" allow="autoplay" src="https://bandcamp.com/EmbeddedPlayer/album=3885090129/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/"></iframe>
             </div>
           </div>
-        </div>
+          <iframe style="border: 0; width: 100%; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/album=3116657203/size=small/bgcol=ffffff/linkcol=0687f5/transparent=true/" seamless><a href="http://gaucimusic.bandcamp.com/album/kevin-murray-william-parker-dave-sewelson-kaelen-ghandhi-live-at-the-bushwick-series">Kevin Murray/William Parker/Dave Sewelson/Kaelen Ghandhi, Live at the Bushwick Series by gaucimusic</a></iframe>
+          <iframe style="border: 0; width: 400px; height: 373px;" src="https://bandcamp.com/EmbeddedPlayer/album=3885090129/size=large/bgcol=333333/linkcol=9a64ff/artwork=small/transparent=true/" seamless><a href="http://flightschoolnyc.bandcamp.com/album/flight-school">Flight School by Flight School</a></iframe>
+
+        <div class="row" id="soundcloud-audio"></div>
+        <script type="text/javascript" language="JavaScript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js">
+          function auth() {
+            SC.initialize({
+              client_id: 'LPqZxMy7VDZTQ0w9g4fuCdMNflDZEdIs'
+            });
+          };
+          var audioTags = [];
+          function generateAudioTags() {
+            SC.get('/playlists/788290590').then(function(playlist) {
+              playlist.tracks.forEach(function(track) {
+                var streamUrl = "https://api.soundcloud.com/tracks/" + track.id + "/stream?client_id=LPqZxMy7VDZTQ0w9g4fuCdMNflDZEdIs";
+                console.log(streamUrl);
+                var tag = "<audio preload='true' controls='true'><source src='" + streamUrl + "'></audio>";
+                console.log(tag);
+                audioTags.push(tag);
+                $('soundcloud-audio').html(audioTags);
+              })
+            });
+          };
+          function execute(){
+            auth()
+            generateAudioTags();
+          };
+          execute();
+        </script>
       </div>
+        </div>
     </section>
 
     <!-- Signup Section -->
