@@ -189,30 +189,27 @@
         <script type="text/javascript" language="JavaScript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js">
           function auth() {
             SC.initialize({
-              client_id: 'LPqZxMy7VDZTQ0w9g4fuCdMNflDZEdIs'
+              client_id: 'Vu5tlmvC9eCLFZkxXG32N1yQMfDSAPAA'
             });
           };
           var audioTags = [];
           function generateAudioTags() {
             SC.get('/playlists/788290590').then(function(playlist) {
               playlist.tracks.forEach(function(track) {
-                var streamUrl = "https://api.soundcloud.com/tracks/" + track.id + "/stream?client_id=LPqZxMy7VDZTQ0w9g4fuCdMNflDZEdIs";
+                var streamUrl = "https://api.soundcloud.com/tracks/" + track.id + "/stream?client_id=Vu5tlmvC9eCLFZkxXG32N1yQMfDSAPAA";
                 console.log(streamUrl);
                 var tag = "<audio preload='true' controls='true'><source src='" + streamUrl + "'></audio>";
                 console.log(tag);
                 audioTags.push(tag);
-                $('soundcloud-audio').html(audioTags);
               })
             });
           };
-          function execute(){
-            auth()
-            generateAudioTags();
-          };
-          execute();
+          auth()
+          generateAudioTags();
+          document.getElementById("soundcloud-audio").innerHTML= audioTags.join("");
         </script>
-      </div>
         </div>
+      </div>
     </section>
 
     <!-- Signup Section -->
