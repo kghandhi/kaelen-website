@@ -84,6 +84,8 @@ function parseEvents(items) {
   });
   if (upcomingEventRows.length > 0) {
     upcomingEventRows.unshift("<h2 class='mb-4 glow'>Upcoming Events</h2>");
+  } else {
+    upcomingEventRows.unshift("<h2 class='mb-4 glow'>More events coming soon...</h2>");
   };
   if (pastEventRows.length > 0) {
     pastEventRows = pastEventRows.reverse();
