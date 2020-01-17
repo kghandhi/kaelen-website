@@ -168,7 +168,7 @@
 				<div class="row align-items-center no-gutters mb-4 mb-lg-5">
           <div class="col-xl-8 col-lg-7">
             <div class="embed-responsive embed-responsive-1by1">
-              <iframe class="embed-responsive-item" style="width: 600px; height: 600px;" scrolling="no" allow="autoplay" src="https://bandcamp.com/EmbeddedPlayer/album=1376363260/size=large/bgcol=F6F3F6/linkcol=AF147B/transparent=true/" seamless><a href="http://michaellarocca.bandcamp.com/album/bones-of-a-house">Bones of a House by Ghandhi / Larocca / Milberger</a></iframe>
+              <iframe class="embed-responsive-item" scrolling="no" allow="autoplay" src="https://bandcamp.com/EmbeddedPlayer/album=1376363260/size=large/bgcol=F6F3F6/linkcol=AF147B/transparent=true/" seamless><a href="http://michaellarocca.bandcamp.com/album/bones-of-a-house">Bones of a House by Ghandhi / Larocca / Milberger</a></iframe>
             </div>
           </div>
           <div class="col-xl-4 col-lg-5">
@@ -337,7 +337,10 @@
     <!-- Footer -->
     <footer class="bg-dark-navy small text-center text-white-50">
       <div class="container">
-        Copyright &copy; Kira 2019
+        <script>
+          var date = (new Date()).getFullYear().toString();
+          document.write("Copyright &copy; Kira " + date);
+        </script>
       </div>
     </footer>
 

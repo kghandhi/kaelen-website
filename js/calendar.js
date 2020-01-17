@@ -27,10 +27,6 @@ function formatLocation(event) {
   var result = '@ ' + locationName;
   var mapsLinkGoogle = descriptionLinkMatching(event, /www.google.com/);
   var mapsLinkGoo = descriptionLinkMatching(event, /goo.gl/);
-  console.log(event)
-  console.log(event.location)
-  console.log(mapsLinkGoogle);
-  console.log(mapsLinkGoo);
   if (mapsLinkGoogle.length > 0) {
     result = '@ <a href="' + mapsLinkGoogle + '" target="_blank">' + locationName + '</a>';
   } else if (mapsLinkGoo.length > 0) {
